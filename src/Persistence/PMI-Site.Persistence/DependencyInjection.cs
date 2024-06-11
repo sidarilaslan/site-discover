@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PMI_Site.Application.Interfaces;
 using PMI_Site.Persistence.Contexts.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace PMI_Site.Persistence
         public static void AddPersistanceService(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<PMISiteContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IPMISiteContext,PMISiteContext>();
         }
     }
 }

@@ -1,9 +1,11 @@
 using PMI_Site.Persistence;
+using PMI_Site.Application;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddPersistanceService(builder.Configuration);
+builder.Services.AddApplicationService();
 
 var app = builder.Build();
 

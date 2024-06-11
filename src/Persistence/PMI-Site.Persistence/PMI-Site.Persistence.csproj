@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\PMI-Site.Application\PMI-Site.Application.csproj" />
     <ProjectReference Include="..\..\Core\PMI-Site.Domain\PMI-Site.Domain.csproj" />
   </ItemGroup>
 

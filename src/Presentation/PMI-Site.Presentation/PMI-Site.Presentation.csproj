@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\PMI-Site.Application\PMI-Site.Application.csproj" />
     <ProjectReference Include="..\..\Persistence\PMI-Site.Persistence\PMI-Site.Persistence.csproj" />
   </ItemGroup>
 
