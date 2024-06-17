@@ -1,6 +1,9 @@
-﻿@{
+﻿@using PMI_Site.Application.Features.Sites.Queries.GetCountrySite
+@{
     ViewData["Title"] = "Home";
 }
+@model List<GetCountrySiteResponse>
+
 <section>
     <div class="container">
         <h3 class="main-article-title header-line-xl">
@@ -32,7 +35,7 @@
     </div>
 </section>
 
- @await Component.InvokeAsync("Sites"); 
+@await Component.InvokeAsync("Sites");
 
 <section>
     <div class="container">
@@ -50,6 +53,14 @@
     <script src="js/svg-zoom.js"></script>
     <script src="js/map.js"></script>
     <script>
+        const CountrySiteValues ={};
+        let myList = @Json.Serialize(Model);
+
+       myList.forEach(item=>{
+            CountrySiteValues[item.countryISO] = {"totalSites":parseInt(item.siteCount,10)};
+       })
+         console.log(CountrySiteValues);
+        
         const worldMap = new svgMap({
             targetElementID: 'svgMap',
             data: {
@@ -60,54 +71,43 @@
                     }
                 },
                 applyData: 'totalSites',
-                values: {
-                    TR: { sites: 10 },
-                    MH: { sites: 2 },
-                    BD: { sites: 3 },
-                    KH: { sites: 4 },
-                    ID: { sites: 5 },
-                    MW: { sites: 6 },
-                    IN: { sites: 7 },
-                    RW: { sites: 8 },
-                    US: { sites: 10 },
-                },
+                values: CountrySiteValues,
 
-            },
-            initialZoom: 1,
+                    },
+        initialZoom: 1,
             noDataText: "site not found",
-            zoomScaleSensitivity: 0.4,
-            mouseWheelZoomWithKey: true,
-            mouseWheelZoomEnabled: false,
-            onGetTooltip: function (tooltipDiv, countryID, countryValues) {
-                var countries = worldMap.countries;
+                zoomScaleSensitivity: 0.4,
+                    mouseWheelZoomWithKey: true,
+                        mouseWheelZoomEnabled: false,
+                            onGetTooltip: function (tooltipDiv, countryID, countryValues) {
+                                var countries = worldMap.countries;
+                                var tooltipContentElement = document.createElement('div');
+                                tooltipContentElement.style.padding = '16px 24px';
 
-                var tooltipContentElement = document.createElement('div');
-                tooltipContentElement.style.padding = '16px 24px';
+                                var innerHTML =
+                                    '<div style="margin: 0 0 10px; text-align: center"><img src="../images/country-svg/{0}.svg" alt="" style="height: 40px; width: auto; border: 2px solid #eee"></div>'.replace(
+                                        '{0}',
+                                        countryID.toLowerCase()
+                                    );
 
-                var innerHTML =
-                    '<div style="margin: 0 0 10px; text-align: center"><img src="../images/country-svg/{0}.svg" alt="" style="height: 40px; width: auto; border: 2px solid #eee"></div>'.replace(
-                        '{0}',
-                        countryID.toLowerCase()
-                    );
+                                innerHTML +=
+                                    '<div style="min-width: 180px; font-weight: bold; margin: 0 0 15px; text-align: center">' +
+                                    countries[countryID] +
+                                    '</div>';
 
-                innerHTML +=
-                    '<div style="min-width: 180px; font-weight: bold; margin: 0 0 15px; text-align: center">' +
-                    countries[countryID] +
-                    '</div>';
+                                if (countryValues && countryValues.totalSites > 0) {
+                                    innerHTML +=
+                                        '<div style="margin-bottom: 8px"><span style="color: #6d0; display: block; margin-right: 20px; width: 20px; text-align: center"></span>number of sites:' + countryValues.totalSites + '</div>';
+                                } else {
+                                    innerHTML +=
+                                        '<div style="margin-bottom: 8px; color: #aaa"><span style="color: #f03; display: inline-block; margin-right: 20px; width: 20px; text-align: center"></span>sites not found</div>';
+                                }
 
-                if (countryValues && countryValues.sites > 0) {
-                    innerHTML +=
-                        '<div style="margin-bottom: 8px"><span style="color: #6d0; display: block; margin-right: 25px; width: 20px; text-align: center"></span>total number of sites:' + countryValues.sites + '</div>';
-                } else {
-                    innerHTML +=
-                        '<div style="margin-bottom: 8px; color: #aaa"><span style="color: #f03; display: inline-block; margin-right: 20px; width: 20px; text-align: center"></span>sites not found</div>';
-                }
+                                tooltipContentElement.innerHTML = innerHTML;
+                                return tooltipContentElement;
+                            }
 
-                tooltipContentElement.innerHTML = innerHTML;
-                return tooltipContentElement;
-            }
-
-        });
+                });
         const resizeHandler = () => {
             worldMap.mapPanZoom.resize();
             worldMap.mapPanZoom.fit();

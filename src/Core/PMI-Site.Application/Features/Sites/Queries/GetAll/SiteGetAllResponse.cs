@@ -13,7 +13,8 @@ namespace PMI_Site.Application.Features.Sites.Queries.GetAllSite
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Region { get; set; }
-        public string Country { get; set; }
+        public string Country{ get; set; }
+        public string CountryISO { get; set; }
         public SiteType SiteType { get; set; }
 
         public static SiteGetAllResponse FromSite(Site site)

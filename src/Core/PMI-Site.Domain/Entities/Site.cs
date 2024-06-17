@@ -13,6 +13,7 @@ namespace PMI_Site.Domain.Entities
         public string Name { get; set; }
         public string Region { get; set; }
         public string Country { get; set; }
+        public string CountryISO { get; set; }
         public bool LocalTeam { get; set; }
         public SiteType SiteType { get; set; }
         public string Address { get; set; }

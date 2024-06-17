@@ -1,21 +1,27 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using PMI_Site.Application.Features.Sites.Queries.GetAllSite;
+using PMI_Site.Application.Features.Sites.Queries.GetCountrySiteCount;
+using PMI_Site.Application.Interfaces;
 using PMI_Site.Presentation.Models;
 using System.Diagnostics;
 
 namespace PMI_Site.Presentation.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
+
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var data = await Mediator.Send(new GetCountrySiteQuery());
+            return View(data);
         }
 
         public IActionResult Privacy()
