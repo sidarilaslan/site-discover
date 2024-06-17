@@ -11,6 +11,13 @@ namespace PMI_Site.Application.Features.Sites.Queries.GetAllSite
 {
     public class SiteGetAllQuery: IRequest<List<SiteGetAllResponse>>
     {
+        public string CountryISO { get; set; }
+
+        public SiteGetAllQuery(string countryISO)
+        {
+            CountryISO = countryISO;
+        }
+
         public class GetAllSiteQueryHandler : IRequestHandler<SiteGetAllQuery, List<SiteGetAllResponse>>
         {
             public IPMISiteContext _context;
@@ -22,7 +29,7 @@ namespace PMI_Site.Application.Features.Sites.Queries.GetAllSite
 
             public async Task<List<SiteGetAllResponse>> Handle(SiteGetAllQuery request, CancellationToken cancellationToken)
             {
-                return await _context.Sites.Select(site => SiteGetAllResponse.FromSite(site)).ToListAsync();
+                return await _context.Sites.Where(site => site.CountryISO==request.CountryISO).Select(site => SiteGetAllResponse.FromSite(site)).ToListAsync();
             }
         }
     }

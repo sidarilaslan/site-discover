@@ -35,8 +35,8 @@
     </div>
 </section>
 
-@await Component.InvokeAsync("Sites");
-
+<div id="siteListContainer">
+</div>
 <section>
     <div class="container">
         <div class="quick-links">
@@ -47,20 +47,18 @@
     </div>
 </section>
 
-
 @section Scripts {
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="js/svg-zoom.js"></script>
     <script src="js/map.js"></script>
     <script>
-        const CountrySiteValues ={};
+        const CountrySiteValues = {};
         let myList = @Json.Serialize(Model);
 
-       myList.forEach(item=>{
-            CountrySiteValues[item.countryISO] = {"totalSites":parseInt(item.siteCount,10)};
-       })
-         console.log(CountrySiteValues);
-        
+        myList.forEach(item => {
+            CountrySiteValues[item.countryISO] = { "totalSites": parseInt(item.siteCount, 10) };
+        });
+
         const worldMap = new svgMap({
             targetElementID: 'svgMap',
             data: {
@@ -72,42 +70,41 @@
                 },
                 applyData: 'totalSites',
                 values: CountrySiteValues,
-
-                    },
-        initialZoom: 1,
+            },
+            initialZoom: 1,
             noDataText: "site not found",
-                zoomScaleSensitivity: 0.4,
-                    mouseWheelZoomWithKey: true,
-                        mouseWheelZoomEnabled: false,
-                            onGetTooltip: function (tooltipDiv, countryID, countryValues) {
-                                var countries = worldMap.countries;
-                                var tooltipContentElement = document.createElement('div');
-                                tooltipContentElement.style.padding = '16px 24px';
+            zoomScaleSensitivity: 0.4,
+            mouseWheelZoomWithKey: true,
+            mouseWheelZoomEnabled: false,
+            onGetTooltip: function (tooltipDiv, countryID, countryValues) {
+                var countries = worldMap.countries;
+                var tooltipContentElement = document.createElement('div');
+                tooltipContentElement.style.padding = '16px 24px';
 
-                                var innerHTML =
-                                    '<div style="margin: 0 0 10px; text-align: center"><img src="../images/country-svg/{0}.svg" alt="" style="height: 40px; width: auto; border: 2px solid #eee"></div>'.replace(
-                                        '{0}',
-                                        countryID.toLowerCase()
-                                    );
+                var innerHTML =
+                    '<div style="margin: 0 0 10px; text-align: center"><img src="../images/country-svg/{0}.svg" alt="" style="height: 40px; width: auto; border: 2px solid #eee"></div>'.replace(
+                        '{0}',
+                        countryID.toLowerCase()
+                    );
 
-                                innerHTML +=
-                                    '<div style="min-width: 180px; font-weight: bold; margin: 0 0 15px; text-align: center">' +
-                                    countries[countryID] +
-                                    '</div>';
+                innerHTML +=
+                    '<div style="min-width: 180px; font-weight: bold; margin: 0 0 15px; text-align: center">' +
+                    countries[countryID] +
+                    '</div>';
 
-                                if (countryValues && countryValues.totalSites > 0) {
-                                    innerHTML +=
-                                        '<div style="margin-bottom: 8px"><span style="color: #6d0; display: block; margin-right: 20px; width: 20px; text-align: center"></span>number of sites:' + countryValues.totalSites + '</div>';
-                                } else {
-                                    innerHTML +=
-                                        '<div style="margin-bottom: 8px; color: #aaa"><span style="color: #f03; display: inline-block; margin-right: 20px; width: 20px; text-align: center"></span>sites not found</div>';
-                                }
+                if (countryValues && countryValues.totalSites > 0) {
+                    innerHTML +=
+                        '<div style="margin-bottom: 8px"><span style="color: #6d0; display: block; margin-right: 20px; width: 20px; text-align: center"></span>number of sites:' + countryValues.totalSites + '</div>';
+                } else {
+                    innerHTML +=
+                        '<div style="margin-bottom: 8px; color: #aaa"><span style="color: #f03; display: inline-block; margin-right: 20px; width: 20px; text-align: center"></span>sites not found</div>';
+                }
 
-                                tooltipContentElement.innerHTML = innerHTML;
-                                return tooltipContentElement;
-                            }
+                tooltipContentElement.innerHTML = innerHTML;
+                return tooltipContentElement;
+            }
+        });
 
-                });
         const resizeHandler = () => {
             worldMap.mapPanZoom.resize();
             worldMap.mapPanZoom.fit();
@@ -137,7 +134,25 @@
 
             input.on('input', adjustInputBorderRadius);
         });
+
+        const allCountry = document.querySelectorAll('.svgMap-country');
+
+        allCountry.forEach(country => {
+            country.addEventListener("click", (e) => {
+                console.log(e.target.dataset.id);
+                $.ajax({
+                    url: '@Url.Action("SiteList", "Home")',
+                    type: 'GET',
+                      data: { CountryISO: e.target.dataset.id },
+                    success: function (result) {
+                        $("#siteListContainer").html(result);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+
     </script>
-
-
 }

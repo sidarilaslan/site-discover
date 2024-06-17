@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PMI_Site.Application.Features.Sites.Queries.GetAllSite;
+using PMI_Site.Application.Features.Sites.Queries.GetById;
 using PMI_Site.Application.Features.Sites.Queries.GetCountrySiteCount;
 using PMI_Site.Application.Interfaces;
 using PMI_Site.Presentation.Models;
@@ -24,10 +25,12 @@ namespace PMI_Site.Presentation.Controllers
             return View(data);
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> SiteList( string CountryISO)
         {
-            return View();
+            var GetByIdSiteResponse = await Mediator.Send(new SiteGetAllQuery(CountryISO));
+            return ViewComponent("Sites", GetByIdSiteResponse);
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

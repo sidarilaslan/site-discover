@@ -15,6 +15,8 @@ namespace PMI_Site.Application.Features.Sites.Queries.GetAllSite
         public string Region { get; set; }
         public string Country{ get; set; }
         public string CountryISO { get; set; }
+        public bool LocalTeam { get; set; }
+
         public SiteType SiteType { get; set; }
 
         public static SiteGetAllResponse FromSite(Site site)
@@ -24,7 +26,9 @@ namespace PMI_Site.Application.Features.Sites.Queries.GetAllSite
                 Id = site.Id,
                 Name = site.Name,
                 Country = site.Country,
+                CountryISO = site.CountryISO,
                 Region = site.Region,
+                LocalTeam = site.LocalTeam,
                 SiteType = site.SiteType
             };
         }
