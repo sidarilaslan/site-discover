@@ -1,13 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using PMI_Site.Application.Features.Sites.Queries.GetAllSite;
 
 namespace PMI_Site.Presentation.ViewComponents
 {
-    public class SitesViewComponent: ViewComponent
+    public class SitesViewComponent : BaseViewComponent
     {
-        public  IViewComponentResult Invoke(List<SiteGetAllResponse> Sites)
+
+        public async Task<IViewComponentResult> InvokeAsync(string CountryISO)
         {
-            return View(Sites);
+
+            var data = await Mediator.Send(new SiteGetAllQuery(CountryISO));
+            return View(data);
         }
     }
 }

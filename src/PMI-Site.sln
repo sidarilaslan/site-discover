@@ -1,4 +1,5 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -12,13 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{A12596F4-C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{052C4969-9393-4340-AC66-E06E57327D98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMI-Site.Domain", "Core\PMI-Site.Domain\PMI-Site.Domain.csproj", "{ACB216E4-CBDA-4665-9E9C-15FDE1300E42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PMI-Site.Domain", "Core\PMI-Site.Domain\PMI-Site.Domain.csproj", "{ACB216E4-CBDA-4665-9E9C-15FDE1300E42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMI-Site.Application", "Core\PMI-Site.Application\PMI-Site.Application.csproj", "{B94DD3E3-832D-4BC2-89E7-E191013A09C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PMI-Site.Application", "Core\PMI-Site.Application\PMI-Site.Application.csproj", "{B94DD3E3-832D-4BC2-89E7-E191013A09C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMI-Site.Infrastructure", "Infrastructure\PMI-Site.Infrastructure\PMI-Site.Infrastructure.csproj", "{0E136EE4-A4BA-42FD-AF41-DAEAFA23BE6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PMI-Site.Infrastructure", "Infrastructure\PMI-Site.Infrastructure\PMI-Site.Infrastructure.csproj", "{0E136EE4-A4BA-42FD-AF41-DAEAFA23BE6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMI-Site.Persistence", "Persistence\PMI-Site.Persistence\PMI-Site.Persistence.csproj", "{AEAACDBB-6240-40F9-BA7B-3AEB8C5BF892}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PMI-Site.Persistence", "Persistence\PMI-Site.Persistence\PMI-Site.Persistence.csproj", "{AEAACDBB-6240-40F9-BA7B-3AEB8C5BF892}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -18,10 +18,10 @@
                                 @* <th>Local Time / Time Zone</th>  *@
                             </tr>
                         </thead>
-                        <tbody onclick="window.open('site.html');" style="cursor: pointer;">
+                        <tbody style="cursor: pointer;">
                             @foreach (var item in Model)
                             {
-                                <tr>
+                                <tr data-Id="@item.Id">
                                     <td>@item.Name</td>
                                     <td>@item.Region</td>
                                     <td>@item.Country</td>
@@ -30,7 +30,6 @@
 
                                     @*       <td>YES</td>
                                 <td>14:00 PM - UTC+3</td> *@
-
                                 </tr>
                             }
 

@@ -4,20 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="~/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="./lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    @await RenderSectionAsync("Styles", false)
 </head>
 
-<body class="index-page-bg-color">
+<body>
     <partial name="~/Views/Shared/Partials/_HeaderPartial.cshtml"/>
     @RenderBody()
-<partial name="~/Views/Shared/Partials/_FooterPartial.cshtml"/>
+    <partial name="~/Views/Shared/Partials/_FooterPartial.cshtml"/>
 
-
-    @RenderSectionAsync("Scripts", false)
-    <script src="js/main.js"></script>
+    @await RenderSectionAsync("Scripts", false)
+    <script src="~/js/main.js"></script>
 </body>
 
 </html>

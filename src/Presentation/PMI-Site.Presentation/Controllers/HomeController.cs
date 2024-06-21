@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.EntityFrameworkCore;
 using PMI_Site.Application.Features.Sites.Queries.GetAllSite;
 using PMI_Site.Application.Features.Sites.Queries.GetById;
@@ -24,12 +25,8 @@ namespace PMI_Site.Presentation.Controllers
             var data = await Mediator.Send(new GetCountrySiteQuery());
             return View(data);
         }
-
-        public async Task<IActionResult> SiteList( string CountryISO)
-        {
-            var GetByIdSiteResponse = await Mediator.Send(new SiteGetAllQuery(CountryISO));
-            return ViewComponent("Sites", GetByIdSiteResponse);
-        }
+        public IActionResult SiteList(string CountryISO)
+            => ViewComponent("Sites", new { CountryISO });
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

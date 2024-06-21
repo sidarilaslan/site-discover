@@ -36,7 +36,10 @@
 </section>
 
 <div id="siteListContainer">
+    @await Component.InvokeAsync("Sites", new { CountryISO = "TR" });
 </div>
+
+
 <section>
     <div class="container">
         <div class="quick-links">
@@ -47,10 +50,22 @@
     </div>
 </section>
 
+@section Styles {
+   <style>
+    body{
+            background-color: #1b1929;
+            background-image: none;
+            background-attachment: unset;
+            background-repeat: unset;
+            background-size: unset;
+    }
+   </style>
+}
+
 @section Scripts {
-    <script src="lib/jquery/dist/jquery.min.js"></script>
-    <script src="js/svg-zoom.js"></script>
-    <script src="js/map.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/svg-zoom.js"></script>
+    <script src="~/js/map.js"></script>
     <script>
         const CountrySiteValues = {};
         let myList = @Json.Serialize(Model);
@@ -139,18 +154,26 @@
 
         allCountry.forEach(country => {
             country.addEventListener("click", (e) => {
-                console.log(e.target.dataset.id);
                 $.ajax({
                     url: '@Url.Action("SiteList", "Home")',
                     type: 'GET',
-                      data: { CountryISO: e.target.dataset.id },
+                    data: { CountryISO: e.target.dataset.id },
                     success: function (result) {
                         $("#siteListContainer").html(result);
+                        window.location.href = "#siteListContainer";
+
                     },
                     error: function (xhr, status, error) {
                         console.log(xhr.responseText);
                     }
                 });
+            });
+        });
+
+        $(() => {
+            $('#sitesTable tbody tr').click(function () {
+                let siteId = $(this).attr('data-Id');
+                window.location.href = '/site/index/' + siteId;
             });
         });
 
