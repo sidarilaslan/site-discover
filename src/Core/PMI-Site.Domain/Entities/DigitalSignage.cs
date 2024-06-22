@@ -12,5 +12,7 @@ namespace PMI_Site.Domain.Entities
     {
         public bool Cloud { get; set; }
         public string Provider { get; set; }
+        public Site Site { get; set; }
+        public Guid SiteId { get; set; }
     }
 }

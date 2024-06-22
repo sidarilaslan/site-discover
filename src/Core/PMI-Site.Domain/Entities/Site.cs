@@ -17,5 +17,10 @@ namespace PMI_Site.Domain.Entities
         public bool LocalTeam { get; set; }
         public SiteType SiteType { get; set; }
         public string Address { get; set; }
+        public ICollection<ITContact> Contacts { get; set; }
+        public DigitalSignage DigitalSignage { get; set; }
+        public GeneralInformation GeneralInformation{ get; set; }
+        public MeetingRoom MeetingRoom { get; set; }
+        public ServerRoom ServerRoom{ get; set; }
     }
 }

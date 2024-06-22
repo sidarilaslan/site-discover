@@ -15,6 +15,7 @@ namespace PMI_Site.Domain.Entities
         public string NumberOfEmployees { get; set; }
         public string OperatingHours { get; set; }
         public DateTime LaunchYear { get; set; }
-
+        public Site Site { get; set; }
+        public Guid SiteId { get; set; }
     }
 }
