@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PMI_Site.Application.Features.Sites.Queries.GetById
 {
-    public class GetByIdSiteResponse
+    public class SiteGetByIdResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -16,8 +16,9 @@ namespace PMI_Site.Application.Features.Sites.Queries.GetById
         public string Country { get; set; }
         public bool LocalTeam { get; set; }
         public SiteType SiteType { get; set; }
+        public string Address { get; set; }
 
-        public static GetByIdSiteResponse FromSite(Site site)
+        public static SiteGetByIdResponse FromSite(Site site)
         {
             return new()
             {
@@ -26,7 +27,8 @@ namespace PMI_Site.Application.Features.Sites.Queries.GetById
                 LocalTeam = site.LocalTeam,
                 Name = site.Name,
                 Region = site.Region,
-                SiteType = site.SiteType
+                SiteType = site.SiteType,
+                Address = site.Address
             };
         }
     }

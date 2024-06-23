@@ -29,7 +29,7 @@ namespace PMI_Site.Application.Features.Sites.Queries.GetAllSite
 
             public async Task<List<SiteGetAllResponse>> Handle(SiteGetAllQuery request, CancellationToken cancellationToken)
             {
-                return await _context.Sites.Where(site => site.CountryISO==request.CountryISO).Select(site => SiteGetAllResponse.FromSite(site)).ToListAsync();
+                return await _context.Sites.AsNoTracking().Where(site => site.CountryISO==request.CountryISO).Select(site => SiteGetAllResponse.FromSite(site)).ToListAsync();
             }
         }
     }

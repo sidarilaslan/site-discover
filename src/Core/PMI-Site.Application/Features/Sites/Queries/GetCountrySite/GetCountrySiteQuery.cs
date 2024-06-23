@@ -22,7 +22,7 @@ namespace PMI_Site.Application.Features.Sites.Queries.GetCountrySiteCount
             }
             public async Task<List<GetCountrySiteResponse>> Handle(GetCountrySiteQuery request, CancellationToken cancellationToken)
             {
-                return await _context.Sites.GroupBy(s => s.CountryISO)
+                return await _context.Sites.AsNoTracking().GroupBy(s => s.CountryISO)
                        .Select(g => new GetCountrySiteResponse()
                        {
                            CountryISO = g.Key,

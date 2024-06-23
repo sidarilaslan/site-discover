@@ -17,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\DigitalSignages\Commands\" />
+    <Folder Include="Features\GeneralInformations\Commands\" />
+    <Folder Include="Features\ITContacts\Commands\" />
     <Folder Include="Features\Sites\Commands\" />
   </ItemGroup>
 

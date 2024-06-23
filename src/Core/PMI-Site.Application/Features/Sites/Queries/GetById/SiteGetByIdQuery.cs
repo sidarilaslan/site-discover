@@ -10,25 +10,21 @@ using System.Threading.Tasks;
 
 namespace PMI_Site.Application.Features.Sites.Queries.GetById
 {
-    public class GetByIdSiteQuery:IRequest<GetByIdSiteResponse>
+    public class SiteGetByIdQuery:IRequest<SiteGetByIdResponse>
     {
         public Guid Id { get; set; }
-        public GetByIdSiteQuery(Guid id)
-        {
-            Id = id;
-        }
-
-        public class GetByIdSiteQueryHandler : IRequestHandler<GetByIdSiteQuery, GetByIdSiteResponse>
+     
+        public class GetByIdSiteQueryHandler : IRequestHandler<SiteGetByIdQuery, SiteGetByIdResponse>
         {
             private readonly IPMISiteContext _context;
             public GetByIdSiteQueryHandler(IPMISiteContext context)
             {
                 _context = context;
             }
-            public async Task<GetByIdSiteResponse> Handle(GetByIdSiteQuery request, CancellationToken cancellationToken)
+            public async Task<SiteGetByIdResponse> Handle(SiteGetByIdQuery request, CancellationToken cancellationToken)
             {
                var site = await _context.Sites.AsNoTracking().FirstOrDefaultAsync(site => site.Id == request.Id,cancellationToken);
-                return GetByIdSiteResponse.FromSite(site);
+                return SiteGetByIdResponse.FromSite(site);
             }
         }
     }
