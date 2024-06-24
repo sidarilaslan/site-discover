@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace PMI_Site.Application.Features.ITContacts.Queries.GetAll
 {
-    public class ITContactGetAllResponse
+    public class ITContactGetAllDto
     {
         public ITContactCategory ITContactCategory { get; set; }
         public string Username { get; set; }
         public string UserJobTitle { get; set; }
 
-        public static ITContactGetAllResponse FromITContact(ITContact ITContact)
+        public static ITContactGetAllDto FromITContact(ITContact ITContact)
             => new()
             {
                 Username = ITContact.Username,

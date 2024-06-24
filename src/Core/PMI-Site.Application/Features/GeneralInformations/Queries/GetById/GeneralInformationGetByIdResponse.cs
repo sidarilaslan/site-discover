@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace PMI_Site.Application.Features.GeneralInformations.Queries.GeneralInformationGetById
 {
-    public class GeneralInformationGetByIdResponse
+    public class GeneralInformationGetByIdDto
     {
         public SiteStatus SiteStatus { get; set; }
         public string SiteSize { get; set; }
         public string NumberOfEmployees { get; set; }
         public string OperatingHours { get; set; }
         public DateTime LaunchYear { get; set; }
-        public static GeneralInformationGetByIdResponse FromGeneralInformation(GeneralInformation generalInformation)
+        public static GeneralInformationGetByIdDto FromGeneralInformation(GeneralInformation generalInformation)
         => new()
         {
             LaunchYear = generalInformation.LaunchYear,

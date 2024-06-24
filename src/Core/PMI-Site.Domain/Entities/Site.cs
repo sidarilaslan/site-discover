@@ -22,5 +22,6 @@ namespace PMI_Site.Domain.Entities
         public GeneralInformation GeneralInformation{ get; set; }
         public MeetingRoom MeetingRoom { get; set; }
         public ServerRoom ServerRoom{ get; set; }
+        public NetworkArchitecture NetworkArchitecture { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PMI_Site.Application.Features.Sites.Queries.GetAllSite
 {
-    public class SiteGetAllQuery: IRequest<List<SiteGetAllResponse>>
+    public class SiteGetAllQuery: IRequest<List<SiteGetAllDto>>
     {
         public string CountryISO { get; set; }
 
@@ -18,7 +18,7 @@ namespace PMI_Site.Application.Features.Sites.Queries.GetAllSite
             CountryISO = countryISO;
         }
 
-        public class GetAllSiteQueryHandler : IRequestHandler<SiteGetAllQuery, List<SiteGetAllResponse>>
+        public class GetAllSiteQueryHandler : IRequestHandler<SiteGetAllQuery, List<SiteGetAllDto>>
         {
             public IPMISiteContext _context;
 
@@ -27,9 +27,9 @@ namespace PMI_Site.Application.Features.Sites.Queries.GetAllSite
                 _context = context;
             }
 
-            public async Task<List<SiteGetAllResponse>> Handle(SiteGetAllQuery request, CancellationToken cancellationToken)
+            public async Task<List<SiteGetAllDto>> Handle(SiteGetAllQuery request, CancellationToken cancellationToken)
             {
-                return await _context.Sites.AsNoTracking().Where(site => site.CountryISO==request.CountryISO).Select(site => SiteGetAllResponse.FromSite(site)).ToListAsync();
+                return await _context.Sites.AsNoTracking().Where(site => site.CountryISO==request.CountryISO).Select(site => SiteGetAllDto.FromSite(site)).ToListAsync();
             }
         }
     }

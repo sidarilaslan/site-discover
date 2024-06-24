@@ -10,10 +10,16 @@ using System.Threading.Tasks;
 
 namespace PMI_Site.Application.Features.GeneralInformations.Queries.GeneralInformationGetById
 {
-    public class GeneralInformationGetByIdQuery :IRequest<GeneralInformationGetByIdResponse>
+    public class GeneralInformationGetByIdQuery :IRequest<GeneralInformationGetByIdDto>
     {
         public Guid SiteId { get; set; }
-        public class GeneralInformationGetByIdQueryHandler : IRequestHandler<GeneralInformationGetByIdQuery, GeneralInformationGetByIdResponse>
+
+        public GeneralInformationGetByIdQuery(Guid siteId)
+        {
+            SiteId = siteId;
+        }
+
+        public class GeneralInformationGetByIdQueryHandler : IRequestHandler<GeneralInformationGetByIdQuery, GeneralInformationGetByIdDto>
         {
             private readonly IPMISiteContext _context;
 
@@ -22,11 +28,11 @@ namespace PMI_Site.Application.Features.GeneralInformations.Queries.GeneralInfor
                 _context = context;
             }
 
-            public async Task<GeneralInformationGetByIdResponse> Handle(GeneralInformationGetByIdQuery request, CancellationToken cancellationToken)
+            public async Task<GeneralInformationGetByIdDto> Handle(GeneralInformationGetByIdQuery request, CancellationToken cancellationToken)
             {
                 GeneralInformation generalInformation = await _context.GeneralInformations.AsNoTracking().FirstOrDefaultAsync(generalInformation => generalInformation.SiteId == request.SiteId);
 
-                return GeneralInformationGetByIdResponse.FromGeneralInformation(generalInformation);
+                return GeneralInformationGetByIdDto.FromGeneralInformation(generalInformation);
 
             }
         }

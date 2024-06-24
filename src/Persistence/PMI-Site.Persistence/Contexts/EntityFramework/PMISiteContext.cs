@@ -22,5 +22,6 @@ namespace PMI_Site.Persistence.Contexts.EntityFramework
         public DbSet<ITContact> ITContacts { get; set; }
         public DbSet<GeneralInformation> GeneralInformations { get; set; }
         public DbSet<DigitalSignage> DigitalSignages { get; set; }
+        public DbSet<NetworkArchitecture> NetworkArchitectures { get; set; }
     }
 }

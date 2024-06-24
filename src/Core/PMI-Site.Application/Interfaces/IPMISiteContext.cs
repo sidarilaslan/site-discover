@@ -16,6 +16,7 @@ namespace PMI_Site.Application.Interfaces
         DbSet<ITContact> ITContacts { get; set; }
         DbSet<GeneralInformation> GeneralInformations { get; set; }
         DbSet<DigitalSignage> DigitalSignages { get; set; }
+        DbSet<NetworkArchitecture> NetworkArchitectures { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

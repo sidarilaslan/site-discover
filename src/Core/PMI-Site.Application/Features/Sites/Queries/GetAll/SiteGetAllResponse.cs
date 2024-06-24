@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PMI_Site.Application.Features.Sites.Queries.GetAllSite
 {
-    public class SiteGetAllResponse
+    public class SiteGetAllDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -19,9 +19,9 @@ namespace PMI_Site.Application.Features.Sites.Queries.GetAllSite
 
         public SiteType SiteType { get; set; }
 
-        public static SiteGetAllResponse FromSite(Site site)
+        public static SiteGetAllDto FromSite(Site site)
         {
-            return new SiteGetAllResponse
+            return new SiteGetAllDto
             {
                 Id = site.Id,
                 Name = site.Name,

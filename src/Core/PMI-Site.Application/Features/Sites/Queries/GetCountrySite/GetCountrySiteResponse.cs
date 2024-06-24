@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PMI_Site.Application.Features.Sites.Queries.GetCountrySite
 {
-    public class GetCountrySiteResponse
+    public class GetCountrySiteDto
     {
         public string SiteCount { get; set; }
         public string CountryISO { get; set; }

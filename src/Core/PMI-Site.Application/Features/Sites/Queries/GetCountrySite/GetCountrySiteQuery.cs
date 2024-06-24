@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace PMI_Site.Application.Features.Sites.Queries.GetCountrySiteCount
 {
-    public class GetCountrySiteQuery : IRequest<List<GetCountrySiteResponse>>
+    public class GetCountrySiteQuery : IRequest<List<GetCountrySiteDto>>
     {
-        public class GetCountrySiteQueryHandler : IRequestHandler<GetCountrySiteQuery, List<GetCountrySiteResponse>>
+        public class GetCountrySiteQueryHandler : IRequestHandler<GetCountrySiteQuery, List<GetCountrySiteDto>>
         {
             private readonly IPMISiteContext _context;
 
@@ -20,10 +20,10 @@ namespace PMI_Site.Application.Features.Sites.Queries.GetCountrySiteCount
             {
                 _context = context;
             }
-            public async Task<List<GetCountrySiteResponse>> Handle(GetCountrySiteQuery request, CancellationToken cancellationToken)
+            public async Task<List<GetCountrySiteDto>> Handle(GetCountrySiteQuery request, CancellationToken cancellationToken)
             {
                 return await _context.Sites.AsNoTracking().GroupBy(s => s.CountryISO)
-                       .Select(g => new GetCountrySiteResponse()
+                       .Select(g => new GetCountrySiteDto()
                        {
                            CountryISO = g.Key,
                            SiteCount = g.Count().ToString()

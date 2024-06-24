@@ -1,13 +1,18 @@
 ﻿
+@using PMI_Site.Application.Features.DigitalSignages.Queries.GetById
 @using PMI_Site.Application.Features.GeneralInformations.Queries.GeneralInformationGetById
 @using PMI_Site.Application.Features.ITContacts.Queries.GetAll
+@using PMI_Site.Application.Features.MeetingRooms.Queries.GetById
+@using PMI_Site.Application.Features.NetworkArchitectures.Queries
+@using PMI_Site.Application.Features.ServerRooms.Queries.GetById
 @using PMI_Site.Application.Features.Sites.Queries.GetById
 @using System.Globalization
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model (SiteGetByIdResponse site,List<ITContactGetAllResponse> ITContacts,GeneralInformationGetByIdResponse GeneralInformation)
+@model (SiteGetByIdDto site,List<ITContactGetAllDto> ITContacts,GeneralInformationGetByIdDto GeneralInformation, DigitalSignageGetByIdDto digitalSignage, MeetingRoomGetByIdDto meetingRoom, ServerRoomGetByIdDto serverRoom,NetworkArchitectureGetByIdDto networkArchitecture )
 <section>
     <div class="container text-center">
         <h2 class="header-line-slim">IT Contacts</h2>
@@ -125,8 +130,8 @@
                     <div class="unit">
                         <div class="unit-body">
                             <p class="custom-card-status mb-2">Server Rooms:</p>
-                            <div>Total number of meeting room: 7</div>
-                            <div>Number of Server Rooms: 2</div>
+                            <div>Total number of meeting room: @Model.serverRoom.TotalMeetingRooms</div>
+                            <div>Number of Server Rooms:  @Model.serverRoom.NumberOfServerRooms</div>
                             <button class="btn btn-primary" type="submit"
                                     onclick="window.location.href ='network-topology.html'">
                                 Server Rooms
@@ -141,8 +146,8 @@
                     <div class="unit">
                         <div class="unit-body">
                             <p class="custom-card-status mb-2">Meeting Rooms:</p>
-                            <div>Total number of meeting room: 7</div>
-                            <div>Number of standard meeting room: 4</div>
+                            <div>Total number of meeting room: @Model.meetingRoom.TotalMeetingRooms</div>
+                            <div>Number of standard meeting room: @Model.meetingRoom.NumberOfStandardMeetingRooms</div>
                             <button class="btn btn-primary" type="submit"
                                     onclick="window.location.href ='meeting-rooms.html'">
                                 Meeting Rooms Details
@@ -156,8 +161,8 @@
                     <div class="unit">
                         <div class="unit-body">
                             <p class="custom-card-status mb-2">Digital Signage:</p>
-                            <div>Cloud: Yes</div>
-                            <div>Provider: Poppulo</div>
+                            <div>Cloud: @(Model.digitalSignage.Cloud? "Yes":"No")</div>
+                            <div>Provider: @Model.digitalSignage.Provider</div>
                         </div>
                     </div>
                 </div>
@@ -167,8 +172,8 @@
                     <div class="unit">
                         <div class="unit-body">
                             <p class="custom-card-status">Network Architecture:</p>
-                            <div>Number of internet lines: 2</div>
-                            <div>Speed: 250mbps</div>
+                            <div>Number of internet lines: @Model.networkArchitecture.NumberOfInternetLines</div>
+                            <div>Speed: @Model.networkArchitecture.ConnectionSpeed</div>
                             <button class="btn btn-primary" type="submit"
                                     onclick="window.location.href ='network-topology.html'">
                                 Network Topology

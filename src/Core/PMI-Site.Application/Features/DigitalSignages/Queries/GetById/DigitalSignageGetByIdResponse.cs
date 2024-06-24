@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace PMI_Site.Application.Features.DigitalSignages.Queries.GetById
 {
-    public class DigitalSignageGetByIdResponse
+    public class DigitalSignageGetByIdDto
     {
         public bool Cloud { get; set; }
         public string Provider { get; set; }
-        public static DigitalSignageGetByIdResponse FromDigitalSignage(DigitalSignage digitalSignage)
+        public static DigitalSignageGetByIdDto FromDigitalSignage(DigitalSignage digitalSignage)
         => new()
         {
             Cloud = digitalSignage.Cloud,
