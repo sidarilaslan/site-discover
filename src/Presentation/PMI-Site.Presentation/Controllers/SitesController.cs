@@ -11,7 +11,7 @@ using System.Diagnostics;
 namespace PMI_Site.Presentation.Controllers
 {
 
-    public class SiteController : BaseController
+    public class SitesController : BaseController
     {
         public async Task<IActionResult> Index(Guid id)
         {

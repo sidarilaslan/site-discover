@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section style="padding: 100px 20px 130px;">
+    <div class="container text-white">
+        <div class="error-404-wrapper">
+            <div class="error-404-content">
+                <h1>
+                    <strong>@ViewBag.StatusCode <br></strong>
+
+                    @ViewBag.ErrorMessage
+                </h1>
+                <a href="/">GO TO OUR HOMEPAGE</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
