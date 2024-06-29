@@ -3,7 +3,9 @@ using PMI_Site.Application;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+string envName = builder.Environment.EnvironmentName;
 builder.Services.AddControllersWithViews();
+builder.Configuration.AddJsonFile($"appsettings.{envName}.json", optional: false, reloadOnChange: true);
 builder.Services.AddPersistanceService(builder.Configuration);
 builder.Services.AddApplicationService();
 

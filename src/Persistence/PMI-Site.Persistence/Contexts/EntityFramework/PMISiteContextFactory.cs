@@ -13,9 +13,11 @@ namespace PMI_Site.Persistence.Contexts.EntityFramework
     {
         public PMISiteContext CreateDbContext(string[] args)
         {
+            string hostEnvironmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
+                .AddJsonFile($"appsettings{hostEnvironmentName}.json")
                 .Build();
 
             string connectionString = configuration.GetConnectionString("DefaultConnection");
