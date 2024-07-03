@@ -1,9 +1,5 @@
 using PMI_Site.Persistence;
 using PMI_Site.Application;
-using System.Net;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using System.Net.Mime;
-using Newtonsoft.Json;
 using PMI_Site.Presentation.Extentions;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +10,7 @@ builder.Configuration.AddJsonFile($"appsettings.{envName}.json", optional: false
 builder.Services.AddPersistanceService(builder.Configuration);
 builder.Services.AddApplicationService();
 builder.Services.AddHealthChecks();
+builder.Services.AddMemoryCache();
 
 
 var app = builder.Build();

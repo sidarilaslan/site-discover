@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using PMI_Site.Application.Features.Sites.Queries.GetCountrySite;
 using PMI_Site.Application.Interfaces;
+using PMI_Site.Application.Pipelines.Caching.InMemoryCache;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,12 @@ using System.Threading.Tasks;
 
 namespace PMI_Site.Application.Features.Sites.Queries.GetCountrySiteCount
 {
-    public class GetCountrySiteQuery : IRequest<List<GetCountrySiteDto>>
+    public class GetCountrySiteQuery : IRequest<List<GetCountrySiteDto>>, ICachableRequestInMemory
     {
+        public string CacheKey => "CountrySite";
+
+        public TimeSpan? SlidingExpiration =>TimeSpan.FromDays(7);
+
         public class GetCountrySiteQueryHandler : IRequestHandler<GetCountrySiteQuery, List<GetCountrySiteDto>>
         {
             private readonly IPMISiteContext _context;
