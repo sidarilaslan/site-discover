@@ -17,7 +17,7 @@ namespace PMI_Site.Persistence.Contexts.EntityFramework
 
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile($"appsettings{hostEnvironmentName}.json")
+                .AddJsonFile($"appsettings{hostEnvironmentName}.json",optional:true)
                 .Build();
 
             string connectionString = configuration.GetConnectionString("DefaultConnection");
