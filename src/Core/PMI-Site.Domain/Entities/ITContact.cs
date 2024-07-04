@@ -15,6 +15,7 @@ namespace PMI_Site.Domain.Entities
         public string UserJobTitle { get; set; }
         public Site Site { get; set; }
         public Guid SiteId{ get; set; }
+        public ITContactUploadedFile ITContactUploadedFile { get; set; }
 
     }
 }

@@ -15,7 +15,6 @@ namespace PMI_Site.Persistence.Contexts.EntityFramework
         {
 
         }
-
         public DbSet<Site> Sites { get; set; }
         public DbSet<ServerRoom> ServerRooms { get; set; }
         public DbSet<MeetingRoom> MeetingRooms { get; set; }
@@ -23,5 +22,7 @@ namespace PMI_Site.Persistence.Contexts.EntityFramework
         public DbSet<GeneralInformation> GeneralInformations { get; set; }
         public DbSet<DigitalSignage> DigitalSignages { get; set; }
         public DbSet<NetworkArchitecture> NetworkArchitectures { get; set; }
+        public DbSet<UploadedFile> UploadedFiles { get; set; }
+        public DbSet<ITContactUploadedFile> ITContactUploadedFiles { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PMI_Site.Persistence.Contexts.EntityFramework;
 
@@ -11,9 +12,11 @@ using PMI_Site.Persistence.Contexts.EntityFramework;
 namespace PMI_Site.Persistence.Migrations
 {
     [DbContext(typeof(PMISiteContext))]
-    partial class PMISiteContextModelSnapshot : ModelSnapshot
+    [Migration("20240704185026_add uploaded file and IT contact uploaded file")]
+    partial class adduploadedfileandITcontactuploadedfile
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
