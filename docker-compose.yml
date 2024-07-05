@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-latest  
+    container_name: mssql
+    ports:
+      - "1455:1433"  
+    environment:
+      SA_PASSWORD: "${SQL_PASSWORD}"
+      ACCEPT_EULA: "Y"
+    volumes:
+      - mssql_data:/var/opt/mssql
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app 
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mssql
+volumes:
+  mssql_data:
+    driver: local
+  
