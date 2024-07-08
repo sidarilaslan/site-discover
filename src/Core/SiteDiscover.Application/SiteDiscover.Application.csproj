@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>SiteDiscover.Application</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SiteDiscover.Domain\SiteDiscover.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\DigitalSignages\Commands\" />
+    <Folder Include="Features\GeneralInformations\Commands\" />
+    <Folder Include="Features\ITContacts\Commands\" />
+    <Folder Include="Features\MeetingRooms\Commands\" />
+    <Folder Include="Features\NetworkArchitectures\Commands\" />
+    <Folder Include="Features\ServerRooms\Commands\" />
+    <Folder Include="Features\Sites\Commands\" />
+  </ItemGroup>
+
+</Project>

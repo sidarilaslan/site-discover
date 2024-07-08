@@ -1,0 +1,213 @@
+﻿
+@using SiteDiscover.Application.Features.DigitalSignages.Queries.GetById
+@using SiteDiscover.Application.Features.GeneralInformations.Queries.GeneralInformationGetById
+@using SiteDiscover.Application.Features.ITContacts.Queries.GetAll
+@using SiteDiscover.Application.Features.MeetingRooms.Queries.GetById
+@using SiteDiscover.Application.Features.NetworkArchitectures.Queries
+@using SiteDiscover.Application.Features.ServerRooms.Queries.GetById
+@using SiteDiscover.Application.Features.Sites.Queries.GetById
+@using System.Globalization
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model (SiteGetByIdDto site,List<ITContactGetAllDto> ITContacts,GeneralInformationGetByIdDto GeneralInformation, DigitalSignageGetByIdDto digitalSignage, MeetingRoomGetByIdDto meetingRoom, ServerRoomGetByIdDto serverRoom,NetworkArchitectureGetByIdDto networkArchitecture )
+@* @functions{
+    private async Task RenderContacts(string header, IEnumerable<ITContactGetAllDto> contacts)
+    {
+        <h4 class="header-line-slim-sm">header</h4>
+        @foreach (var item in contacts)
+        {
+            <div class="custom-card">
+                <div class="unit unit-spacing">
+                    <div class="unit-left">
+                        <img class="img-circles" src="~/images/user-1-75x75.jpg" alt="" width="75" height="75">
+                    </div>
+                    <div class="unit-body">
+                        <h4 class="custom-card-title">@item.Username.ToUpper(new CultureInfo("tr-TR"))</h4>
+                        <p class="custom-card-status">@item.UserJobTitle.ToUpper(new CultureInfo("tr-TR"))</p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+} *@
+    <section>
+    <div class="container text-center">
+        <h2 class="header-line-slim">IT Contacts</h2>
+        <div class="row row-30 mt-4 justify-content-center">
+            <div class="col-md-6 col-lg-5 col-xl-4">
+         
+
+            </div>
+            <div class="col-md-6 col-lg-5 col-xl-4">
+                <h4 class="header-line-slim-sm">IT OPERATIONS</h4>
+                @foreach (var item in Model.ITContacts)
+                {
+                    <div class="custom-card">
+                        <div class="unit unit-spacing">
+                            <div class="unit-left">
+                                <img class="img-circles" src="~/images/user-1-75x75.jpg" alt="" width="75" height="75">
+                            </div>
+                            <div class="unit-body">
+                                <h4 class="custom-card-title">@item.Username.ToUpper(new CultureInfo("tr-TR"))</h4>
+                                <p class="custom-card-status">@item.UserJobTitle.ToUpper(new CultureInfo("tr-TR"))</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-md-6 col-lg-5 col-xl-4">
+            
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="general-information">
+    <div class="container text-center">
+        <h2 class="header-line-slim">General Information</h2>
+
+        <div class="custom-card d-block text-center">
+            <div class="row">
+                <div class="col-md-4 p-2">
+                    <span class="custom-card-status">Site Status: </span>
+                    <span class="site-status">@Model.GeneralInformation.SiteStatus</span>
+                </div>
+                <div class="col-md-4 p-2">
+                    <span class="custom-card-status">Site Type: </span>
+                    <span class="site-type">@Model.site.SiteType</span>
+                </div>
+                <div class="col-md-4 p-2">
+                    <span class="custom-card-status"> Number of Employees:</span>
+                    <span class="num-employees">@Model.GeneralInformation.NumberOfEmployees</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 p-2">
+                    <span class="custom-card-status">Operating Hours:</span>
+                    <span class="operating-hours">@Model.GeneralInformation.OperatingHours</span>
+                </div>
+                <div class="col-md-4 p-2">
+                    <span class="custom-card-status">Time Zone:</span>
+                    <span class="time-zone">UTC+1</span>
+                </div>
+                <div class="col-md-4 p-2">
+                    <span class="custom-card-status">Launch Year:</span>
+                    <span class="launch-year">@Model.GeneralInformation.LaunchYear.ToString("yyyy")</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 p-2">
+                    <span class="custom-card-status">Size:</span>
+                    <span class="size">@Model.GeneralInformation.SiteSize</span>
+                </div>
+                <div class="col-md-4 p-2">
+                    <div class="location">
+                        <p>@Model.site.Country</p>
+                        <h4 class="d-inline-block">ÖÖ 9:30</h4>
+                        <span class="date">Perşembe, 4.04.2024</span>
+                    </div>
+                </div>
+                <div class="col-md-4 p-2">
+                    <button class="btn btn-primary mt-auto" type="submit"
+                            onclick="window.location.href ='factory-image.html'">
+                        Factory Image Gallery
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+
+<section class="technical-infrastructure">
+    <div class="container text-center">
+        <h2 class="header-line-slim">Technical Infrastructure</h2>
+        <div class="row row-30">
+            <div class="col-md-6 col-lg-5 col-xl-4">
+                <div class="custom-card">
+                    <div class="unit">
+                        <div class="unit-body">
+                            <p class="custom-card-status mb-2">Server Rooms:</p>
+                            <div>Total number of meeting room: @Model.serverRoom.TotalMeetingRooms</div>
+                            <div>Number of Server Rooms:  @Model.serverRoom.NumberOfServerRooms</div>
+                            <button class="btn btn-primary" type="submit"
+                                    onclick="window.location.href ='network-topology.html'">
+                                Server Rooms
+                                Gallery
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-5 col-xl-4">
+                <div class="custom-card">
+                    <div class="unit">
+                        <div class="unit-body">
+                            <p class="custom-card-status mb-2">Meeting Rooms:</p>
+                            <div>Total number of meeting room: @Model.meetingRoom.TotalMeetingRooms</div>
+                            <div>Number of standard meeting room: @Model.meetingRoom.NumberOfStandardMeetingRooms</div>
+                            <button class="btn btn-primary" type="submit"
+                                    onclick="window.location.href ='meeting-rooms.html'">
+                                Meeting Rooms Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-5 col-xl-4">
+                <div class="custom-card">
+                    <div class="unit">
+                        <div class="unit-body">
+                            <p class="custom-card-status mb-2">Digital Signage:</p>
+                            <div>Cloud: @(Model.digitalSignage.Cloud? "Yes":"No")</div>
+                            <div>Provider: @Model.digitalSignage.Provider</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-5 col-xl-4">
+                <div class="custom-card">
+                    <div class="unit">
+                        <div class="unit-body">
+                            <p class="custom-card-status">Network Architecture:</p>
+                            <div>Number of internet lines: @Model.networkArchitecture.NumberOfInternetLines</div>
+                            <div>Speed: @Model.networkArchitecture.ConnectionSpeed</div>
+                            <button class="btn btn-primary" type="submit"
+                                    onclick="window.location.href ='network-topology.html'">
+                                Network Topology
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container text-center">
+        <div class="card">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <h3 class="pb-2">@Model.site.SiteType location</h3>
+                    <span>@Model.site.Address</span>
+                </div>
+                <div class="col-md-8" style="height: 400px;">
+                    <iframe src="http://maps.google.com/maps?q=38.1940474,27.3633318&z=16&output=embed"
+                            height="100%" width="100%" style="flex: 1;" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

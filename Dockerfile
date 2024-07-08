@@ -1,21 +1,21 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-COPY ./src/PMI-Site.sln .
-COPY ./src/Core/PMI-Site.Application/PMI-Site.Application.csproj ./Core/PMI-Site.Application/
-COPY ./src/Core/PMI-Site.Domain/PMI-Site.Domain.csproj ./Core/PMI-Site.Domain/
-COPY ./src/Infrastructure/PMI-Site.Infrastructure/PMI-Site.Infrastructure.csproj ./Infrastructure/PMI-Site.Infrastructure/
-COPY ./src/Persistence/PMI-Site.Persistence/PMI-Site.Persistence.csproj ./Persistence/PMI-Site.Persistence/
-COPY ./src/Presentation/PMI-Site.Presentation/PMI-Site.Presentation.csproj ./Presentation/PMI-Site.Presentation/
+COPY ./src/SiteDiscover.sln .
+COPY ./src/Core/SiteDiscover.Application/SiteDiscover.Application.csproj ./Core/SiteDiscover.Application/
+COPY ./src/Core/SiteDiscover.Domain/SiteDiscover.Domain.csproj ./Core/SiteDiscover.Domain/
+COPY ./src/Infrastructure/SiteDiscover.Infrastructure/SiteDiscover.Infrastructure.csproj ./Infrastructure/SiteDiscover.Infrastructure/
+COPY ./src/Persistence/SiteDiscover.Persistence/SiteDiscover.Persistence.csproj ./Persistence/SiteDiscover.Persistence/
+COPY ./src/Presentation/SiteDiscover.Presentation/SiteDiscover.Presentation.csproj ./Presentation/SiteDiscover.Presentation/
 
 RUN dotnet restore
 
 COPY ./src/ .
 
-RUN dotnet publish ./Presentation/PMI-Site.Presentation/PMI-Site.Presentation.csproj -o /publish/
+RUN dotnet publish ./Presentation/SiteDiscover.Presentation/SiteDiscover.Presentation.csproj -o /publish/
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS RUNTIME
 WORKDIR /app
 COPY --from=build /publish .
 ENV ASPNETCORE_URLS="http://*:1212"
-ENTRYPOINT ["dotnet", "PMI-Site.Presentation.dll"]
+ENTRYPOINT ["dotnet", "SiteDiscover.Presentation.dll"]
