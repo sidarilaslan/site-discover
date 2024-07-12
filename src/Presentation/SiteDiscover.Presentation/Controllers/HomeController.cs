@@ -14,7 +14,7 @@ namespace SiteDiscover.Presentation.Controllers
         {
             _logger = logger;
         }
-        [ResponseCache(Duration = 86400, Location =ResponseCacheLocation.Client,NoStore =false)]
+        /*[ResponseCache(Duration = 86400, Location =ResponseCacheLocation.Client,NoStore =false)]*/
         public async Task<IActionResult> Index()
         {
             var data = await Mediator.Send(new GetCountrySiteQuery());

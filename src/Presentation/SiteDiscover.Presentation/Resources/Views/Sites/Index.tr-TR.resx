@@ -117,7 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Welcome" xml:space="preserve">
-    <value>THIS IS A ENGLISH MENNN</value>
+  <data name="Cloud" xml:space="preserve">
+    <value>Bulut</value>
+  </data>
+  <data name="Connection Speed" xml:space="preserve">
+    <value>Bağlantı Hızı</value>
+  </data>
+  <data name="Digital Signage" xml:space="preserve">
+    <value>Dijital Tabela</value>
+  </data>
+  <data name="Factory Image Gallery" xml:space="preserve">
+    <value>Fabrika Resim Galerisi</value>
+  </data>
+  <data name="General Information" xml:space="preserve">
+    <value>Genel Bilgiler</value>
+  </data>
+  <data name="IT Contacts" xml:space="preserve">
+    <value>BT İletişim</value>
+  </data>
+  <data name="IT OPERATIONS" xml:space="preserve">
+    <value>BT OPERASYONLARI</value>
+  </data>
+  <data name="Launch Year" xml:space="preserve">
+    <value>Başlangıç Yılı</value>
+  </data>
+  <data name="Meeting Rooms" xml:space="preserve">
+    <value>Toplantı Salonları</value>
+  </data>
+  <data name="Meeting Rooms Details" xml:space="preserve">
+    <value>Toplantı Odaları Detayları</value>
+  </data>
+  <data name="Network Architecture" xml:space="preserve">
+    <value>Ağ Mimarisi</value>
+  </data>
+  <data name="Network Topology" xml:space="preserve">
+    <value>Ağ Topolojisi</value>
+  </data>
+  <data name="Number of Employees" xml:space="preserve">
+    <value>Çalışan Sayısı</value>
+  </data>
+  <data name="Number of internet lines" xml:space="preserve">
+    <value>İnternet hattı sayısı</value>
+  </data>
+  <data name="Number of Server Rooms" xml:space="preserve">
+    <value>Sunucu Odası Sayısı</value>
+  </data>
+  <data name="Number of standard meeting room" xml:space="preserve">
+    <value>Standart toplantı odası sayısı</value>
+  </data>
+  <data name="Operating Hours" xml:space="preserve">
+    <value>Çalışma Saatleri</value>
+  </data>
+  <data name="Provider" xml:space="preserve">
+    <value>Sağlayıcı</value>
+  </data>
+  <data name="Server Rooms" xml:space="preserve">
+    <value>Sunucu Odaları</value>
+  </data>
+  <data name="Server Rooms Gallery" xml:space="preserve">
+    <value>Sunucu Odaları Galerisi</value>
+  </data>
+  <data name="Site Size" xml:space="preserve">
+    <value>Site Büyüklüğü</value>
+  </data>
+  <data name="Site Status" xml:space="preserve">
+    <value>Site Durumu</value>
+  </data>
+  <data name="Site Type" xml:space="preserve">
+    <value>Site Tipi</value>
+  </data>
+  <data name="Technical Infrastructure" xml:space="preserve">
+    <value>Teknik Altyapı</value>
+  </data>
+  <data name="Time Zone" xml:space="preserve">
+    <value>Saat Dilimi</value>
+  </data>
+  <data name="Total number of meeting room" xml:space="preserve">
+    <value>Toplam toplantı odası sayısı</value>
   </data>
 </root>

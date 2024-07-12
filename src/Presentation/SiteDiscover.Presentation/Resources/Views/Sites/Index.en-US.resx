@@ -117,7 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Welcome" xml:space="preserve">
-    <value>BABA NABER YA</value>
+  <data name="Cloud" xml:space="preserve">
+    <value>Cloud</value>
+  </data>
+  <data name="Connection Speed" xml:space="preserve">
+    <value>Connection Speed</value>
+  </data>
+  <data name="Digital Signage" xml:space="preserve">
+    <value>Digital Signage</value>
+  </data>
+  <data name="Factory Image Gallery" xml:space="preserve">
+    <value>Factory Image Gallery</value>
+  </data>
+  <data name="General Information" xml:space="preserve">
+    <value>General Information</value>
+  </data>
+  <data name="IT Contacts" xml:space="preserve">
+    <value>IT Contacts</value>
+  </data>
+  <data name="IT OPERATIONS" xml:space="preserve">
+    <value>IT OPERATIONS</value>
+  </data>
+  <data name="Launch Year" xml:space="preserve">
+    <value>Launch Year</value>
+  </data>
+  <data name="Meeting Rooms" xml:space="preserve">
+    <value>Meeting Rooms</value>
+  </data>
+  <data name="Meeting Rooms Details" xml:space="preserve">
+    <value>Meeting Rooms Details</value>
+  </data>
+  <data name="Network Architecture" xml:space="preserve">
+    <value>Network Architecture</value>
+  </data>
+  <data name="Network Topology" xml:space="preserve">
+    <value>Network Topology</value>
+  </data>
+  <data name="Number of Employees" xml:space="preserve">
+    <value>Number of Employees</value>
+  </data>
+  <data name="Number of internet lines" xml:space="preserve">
+    <value>Number of internet lines</value>
+  </data>
+  <data name="Number of Server Rooms" xml:space="preserve">
+    <value>Number of Server Rooms</value>
+  </data>
+  <data name="Number of standard meeting room" xml:space="preserve">
+    <value>Number of standard meeting room</value>
+  </data>
+  <data name="Operating Hours" xml:space="preserve">
+    <value>Operating Hours</value>
+  </data>
+  <data name="Provider" xml:space="preserve">
+    <value>Provider</value>
+  </data>
+  <data name="Server Rooms" xml:space="preserve">
+    <value>Server Rooms</value>
+  </data>
+  <data name="Server Rooms Gallery" xml:space="preserve">
+    <value>Server Rooms Gallery</value>
+  </data>
+  <data name="Site Size" xml:space="preserve">
+    <value>Site Size</value>
+  </data>
+  <data name="Site Status" xml:space="preserve">
+    <value>Site Status</value>
+  </data>
+  <data name="Site Type" xml:space="preserve">
+    <value>Site Type</value>
+  </data>
+  <data name="Technical Infrastructure" xml:space="preserve">
+    <value>Technical Infrastructure</value>
+  </data>
+  <data name="Time Zone" xml:space="preserve">
+    <value>Time Zone</value>
+  </data>
+  <data name="Total number of meeting room" xml:space="preserve">
+    <value>Total number of meeting room</value>
   </data>
 </root>

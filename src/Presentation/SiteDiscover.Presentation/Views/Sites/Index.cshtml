@@ -35,14 +35,14 @@
 } *@
     <section>
     <div class="container text-center">
-        <h2 class="header-line-slim">IT Contacts</h2>
+        <h2 class="header-line-slim">@Localizer["IT Contacts"]</h2>
         <div class="row row-30 mt-4 justify-content-center">
             <div class="col-md-6 col-lg-5 col-xl-4">
          
 
             </div>
             <div class="col-md-6 col-lg-5 col-xl-4">
-                <h4 class="header-line-slim-sm">IT OPERATIONS</h4>
+                <h4 class="header-line-slim-sm">@Localizer["IT OPERATIONS"]</h4>
                 @foreach (var item in Model.ITContacts)
                 {
                     <div class="custom-card">
@@ -68,42 +68,42 @@
 
 <section class="general-information">
     <div class="container text-center">
-        <h2 class="header-line-slim">General Information</h2>
+        <h2 class="header-line-slim">@Localizer["General Information"]</h2>
 
         <div class="custom-card d-block text-center">
             <div class="row">
                 <div class="col-md-4 p-2">
-                    <span class="custom-card-status">Site Status: </span>
+                    <span class="custom-card-status">@Localizer["Site Status"]: </span>
                     <span class="site-status">@Model.GeneralInformation.SiteStatus</span>
                 </div>
                 <div class="col-md-4 p-2">
-                    <span class="custom-card-status">Site Type: </span>
+                    <span class="custom-card-status">@Localizer["Site Type"]: </span>
                     <span class="site-type">@Model.site.SiteType</span>
                 </div>
                 <div class="col-md-4 p-2">
-                    <span class="custom-card-status"> Number of Employees:</span>
+                    <span class="custom-card-status"> @Localizer["Number of Employees"]:</span>
                     <span class="num-employees">@Model.GeneralInformation.NumberOfEmployees</span>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-4 p-2">
-                    <span class="custom-card-status">Operating Hours:</span>
+                    <span class="custom-card-status">@Localizer["Operating Hours"]:</span>
                     <span class="operating-hours">@Model.GeneralInformation.OperatingHours</span>
                 </div>
                 <div class="col-md-4 p-2">
-                    <span class="custom-card-status">Time Zone:</span>
+                    <span class="custom-card-status">@Localizer["Time Zone"]:</span>
                     <span class="time-zone">UTC+1</span>
                 </div>
                 <div class="col-md-4 p-2">
-                    <span class="custom-card-status">Launch Year:</span>
+                    <span class="custom-card-status">@Localizer["Launch Year"]:</span>
                     <span class="launch-year">@Model.GeneralInformation.LaunchYear.ToString("yyyy")</span>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-4 p-2">
-                    <span class="custom-card-status">Size:</span>
+                    <span class="custom-card-status">@Localizer["Site Size"]:</span>
                     <span class="size">@Model.GeneralInformation.SiteSize</span>
                 </div>
                 <div class="col-md-4 p-2">
@@ -116,7 +116,7 @@
                 <div class="col-md-4 p-2">
                     <button class="btn btn-primary mt-auto" type="submit"
                             onclick="window.location.href ='factory-image.html'">
-                        Factory Image Gallery
+                        @Localizer["Factory Image Gallery"]
                     </button>
                 </div>
 
@@ -131,19 +131,19 @@
 
 <section class="technical-infrastructure">
     <div class="container text-center">
-        <h2 class="header-line-slim">Technical Infrastructure</h2>
+        <h2 class="header-line-slim">@Localizer["Technical Infrastructure"]</h2>
         <div class="row row-30">
             <div class="col-md-6 col-lg-5 col-xl-4">
                 <div class="custom-card">
                     <div class="unit">
                         <div class="unit-body">
-                            <p class="custom-card-status mb-2">Server Rooms:</p>
-                            <div>Total number of meeting room: @Model.serverRoom.TotalMeetingRooms</div>
-                            <div>Number of Server Rooms:  @Model.serverRoom.NumberOfServerRooms</div>
+                            <p class="custom-card-status mb-2">
+                                @Localizer["Server Rooms"]:</p>
+                            <div>@Localizer["Total number of meeting room"]: @Model.serverRoom.TotalMeetingRooms</div>
+                            <div>@Localizer["Number of Server Rooms"]:  @Model.serverRoom.NumberOfServerRooms</div>
                             <button class="btn btn-primary" type="submit"
                                     onclick="window.location.href ='network-topology.html'">
-                                Server Rooms
-                                Gallery
+                                @Localizer["Server Rooms Gallery"]
                             </button>
                         </div>
                     </div>
@@ -153,12 +153,12 @@
                 <div class="custom-card">
                     <div class="unit">
                         <div class="unit-body">
-                            <p class="custom-card-status mb-2">Meeting Rooms:</p>
-                            <div>Total number of meeting room: @Model.meetingRoom.TotalMeetingRooms</div>
-                            <div>Number of standard meeting room: @Model.meetingRoom.NumberOfStandardMeetingRooms</div>
+                            <p class="custom-card-status mb-2">@Localizer["Meeting Rooms"]:</p>
+                            <div>@Localizer["Total number of meeting room"]: @Model.meetingRoom.TotalMeetingRooms</div>
+                            <div>@Localizer["Number of standard meeting room"]: @Model.meetingRoom.NumberOfStandardMeetingRooms</div>
                             <button class="btn btn-primary" type="submit"
                                     onclick="window.location.href ='meeting-rooms.html'">
-                                Meeting Rooms Details
+                                @Localizer["Meeting Rooms Details"]
                             </button>
                         </div>
                     </div>
@@ -168,9 +168,9 @@
                 <div class="custom-card">
                     <div class="unit">
                         <div class="unit-body">
-                            <p class="custom-card-status mb-2">Digital Signage:</p>
-                            <div>Cloud: @(Model.digitalSignage.Cloud? "Yes":"No")</div>
-                            <div>Provider: @Model.digitalSignage.Provider</div>
+                            <p class="custom-card-status mb-2">@Localizer["Digital Signage"]:</p>
+                            <div>@Localizer["Cloud"]: @(Model.digitalSignage.Cloud ? "Yes" : "No")</div>
+                            <div>@Localizer["Provider"]: @Model.digitalSignage.Provider</div>
                         </div>
                     </div>
                 </div>
@@ -179,12 +179,13 @@
                 <div class="custom-card">
                     <div class="unit">
                         <div class="unit-body">
-                            <p class="custom-card-status">Network Architecture:</p>
-                            <div>Number of internet lines: @Model.networkArchitecture.NumberOfInternetLines</div>
-                            <div>Speed: @Model.networkArchitecture.ConnectionSpeed</div>
+                            <p class="custom-card-status">@Localizer["Network Architecture"]:</p>
+                            <div>
+                                @Localizer["Number of internet lines"]: @Model.networkArchitecture.NumberOfInternetLines</div>
+                            <div>@Localizer["Connection Speed"]: @Model.networkArchitecture.ConnectionSpeed</div>
                             <button class="btn btn-primary" type="submit"
                                     onclick="window.location.href ='network-topology.html'">
-                                Network Topology
+                                @Localizer["Network Topology"]
                             </button>
                         </div>
                     </div>
