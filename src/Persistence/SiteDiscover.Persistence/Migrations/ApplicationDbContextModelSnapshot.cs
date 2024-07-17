@@ -3,7 +3,6 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SiteDiscover.Persistence.Contexts.EntityFramework;
 
@@ -11,12 +10,10 @@ using SiteDiscover.Persistence.Contexts.EntityFramework;
 
 namespace SiteDiscover.Persistence.Migrations
 {
-    [DbContext(typeof(PMISiteContext))]
-    [Migration("20240621233801_add entities realationship")]
-    partial class addentitiesrealationship
+    [DbContext(typeof(ApplicationDbContext))]
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,7 +22,7 @@ namespace SiteDiscover.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.DigitalSignage", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.DigitalSignage", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,7 +64,7 @@ namespace SiteDiscover.Persistence.Migrations
                     b.ToTable("DigitalSignages");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.GeneralInformation", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.GeneralInformation", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -120,7 +117,7 @@ namespace SiteDiscover.Persistence.Migrations
                     b.ToTable("GeneralInformations");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.ITContact", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.ITContact", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -165,7 +162,30 @@ namespace SiteDiscover.Persistence.Migrations
                     b.ToTable("ITContacts");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.MeetingRoom", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.ITContactUploadedFile", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ITContactId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UploadedFileId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ITContactId")
+                        .IsUnique();
+
+                    b.HasIndex("UploadedFileId")
+                        .IsUnique();
+
+                    b.ToTable("ITContactUploadedFiles");
+                });
+
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.MeetingRoom", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -208,7 +228,50 @@ namespace SiteDiscover.Persistence.Migrations
                     b.ToTable("MeetingRooms");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.ServerRoom", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.NetworkArchitecture", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ConnectionSpeed")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedByUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumberOfInternetLines")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("SiteId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SiteId")
+                        .IsUnique();
+
+                    b.ToTable("NetworkArchitectures");
+                });
+
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.ServerRoom", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -251,7 +314,7 @@ namespace SiteDiscover.Persistence.Migrations
                     b.ToTable("ServerRooms");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.Site", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.Site", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -306,31 +369,68 @@ namespace SiteDiscover.Persistence.Migrations
                     b.ToTable("Sites");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.DigitalSignage", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.UploadedFile", b =>
                 {
-                    b.HasOne("PMI_Site.Domain.Entities.Site", "Site")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedByUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Directory")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Extension")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("FileType")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Path")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UploadedFiles");
+                });
+
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.DigitalSignage", b =>
+                {
+                    b.HasOne("SiteDiscover.Domain.Entities.Site", "Site")
                         .WithOne("DigitalSignage")
-                        .HasForeignKey("PMI_Site.Domain.Entities.DigitalSignage", "SiteId")
+                        .HasForeignKey("SiteDiscover.Domain.Entities.DigitalSignage", "SiteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Site");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.GeneralInformation", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.GeneralInformation", b =>
                 {
-                    b.HasOne("PMI_Site.Domain.Entities.Site", "Site")
+                    b.HasOne("SiteDiscover.Domain.Entities.Site", "Site")
                         .WithOne("GeneralInformation")
-                        .HasForeignKey("PMI_Site.Domain.Entities.GeneralInformation", "SiteId")
+                        .HasForeignKey("SiteDiscover.Domain.Entities.GeneralInformation", "SiteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Site");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.ITContact", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.ITContact", b =>
                 {
-                    b.HasOne("PMI_Site.Domain.Entities.Site", "Site")
+                    b.HasOne("SiteDiscover.Domain.Entities.Site", "Site")
                         .WithMany("Contacts")
                         .HasForeignKey("SiteId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -339,29 +439,65 @@ namespace SiteDiscover.Persistence.Migrations
                     b.Navigation("Site");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.MeetingRoom", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.ITContactUploadedFile", b =>
                 {
-                    b.HasOne("PMI_Site.Domain.Entities.Site", "Site")
+                    b.HasOne("SiteDiscover.Domain.Entities.ITContact", "ITContact")
+                        .WithOne("ITContactUploadedFile")
+                        .HasForeignKey("SiteDiscover.Domain.Entities.ITContactUploadedFile", "ITContactId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SiteDiscover.Domain.Entities.UploadedFile", "UploadedFile")
+                        .WithOne("ITContactUploadedFile")
+                        .HasForeignKey("SiteDiscover.Domain.Entities.ITContactUploadedFile", "UploadedFileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ITContact");
+
+                    b.Navigation("UploadedFile");
+                });
+
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.MeetingRoom", b =>
+                {
+                    b.HasOne("SiteDiscover.Domain.Entities.Site", "Site")
                         .WithOne("MeetingRoom")
-                        .HasForeignKey("PMI_Site.Domain.Entities.MeetingRoom", "SiteId")
+                        .HasForeignKey("SiteDiscover.Domain.Entities.MeetingRoom", "SiteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Site");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.ServerRoom", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.NetworkArchitecture", b =>
                 {
-                    b.HasOne("PMI_Site.Domain.Entities.Site", "Site")
-                        .WithOne("ServerRoom")
-                        .HasForeignKey("PMI_Site.Domain.Entities.ServerRoom", "SiteId")
+                    b.HasOne("SiteDiscover.Domain.Entities.Site", "Site")
+                        .WithOne("NetworkArchitecture")
+                        .HasForeignKey("SiteDiscover.Domain.Entities.NetworkArchitecture", "SiteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Site");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.Site", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.ServerRoom", b =>
+                {
+                    b.HasOne("SiteDiscover.Domain.Entities.Site", "Site")
+                        .WithOne("ServerRoom")
+                        .HasForeignKey("SiteDiscover.Domain.Entities.ServerRoom", "SiteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Site");
+                });
+
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.ITContact", b =>
+                {
+                    b.Navigation("ITContactUploadedFile")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.Site", b =>
                 {
                     b.Navigation("Contacts");
 
@@ -374,7 +510,16 @@ namespace SiteDiscover.Persistence.Migrations
                     b.Navigation("MeetingRoom")
                         .IsRequired();
 
+                    b.Navigation("NetworkArchitecture")
+                        .IsRequired();
+
                     b.Navigation("ServerRoom")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.UploadedFile", b =>
+                {
+                    b.Navigation("ITContactUploadedFile")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

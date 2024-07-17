@@ -15,9 +15,9 @@ namespace SiteDiscover.Application.Features.ServerRooms.Queries.GetById
 
         public class ServerRoomGetByIdQueryHandler : IRequestHandler<ServerRoomGetByIdQuery, ServerRoomGetByIdDto>
         {
-            private readonly IPMISiteContext _context;
+            private readonly Interfaces.IApplicationDbContext _context;
 
-            public ServerRoomGetByIdQueryHandler(IPMISiteContext context)
+            public ServerRoomGetByIdQueryHandler(Interfaces.IApplicationDbContext context)
             {
                 _context = context;
             }

@@ -10,8 +10,8 @@ namespace SiteDiscover.Persistence
     {
         public static void AddPersistanceService(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<PMISiteContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<IPMISiteContext,PMISiteContext>();
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
         }
     }
 }

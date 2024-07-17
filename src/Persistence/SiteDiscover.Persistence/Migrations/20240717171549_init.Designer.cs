@@ -11,9 +11,9 @@ using SiteDiscover.Persistence.Contexts.EntityFramework;
 
 namespace SiteDiscover.Persistence.Migrations
 {
-    [DbContext(typeof(PMISiteContext))]
-    [Migration("20240704185026_add uploaded file and IT contact uploaded file")]
-    partial class adduploadedfileandITcontactuploadedfile
+    [DbContext(typeof(ApplicationDbContext))]
+    [Migration("20240717171549_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace SiteDiscover.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.DigitalSignage", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.DigitalSignage", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,7 +67,7 @@ namespace SiteDiscover.Persistence.Migrations
                     b.ToTable("DigitalSignages");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.GeneralInformation", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.GeneralInformation", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -120,7 +120,7 @@ namespace SiteDiscover.Persistence.Migrations
                     b.ToTable("GeneralInformations");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.ITContact", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.ITContact", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -165,7 +165,7 @@ namespace SiteDiscover.Persistence.Migrations
                     b.ToTable("ITContacts");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.ITContactUploadedFile", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.ITContactUploadedFile", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -188,7 +188,7 @@ namespace SiteDiscover.Persistence.Migrations
                     b.ToTable("ITContactUploadedFiles");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.MeetingRoom", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.MeetingRoom", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -231,7 +231,7 @@ namespace SiteDiscover.Persistence.Migrations
                     b.ToTable("MeetingRooms");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.NetworkArchitecture", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.NetworkArchitecture", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -274,7 +274,7 @@ namespace SiteDiscover.Persistence.Migrations
                     b.ToTable("NetworkArchitectures");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.ServerRoom", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.ServerRoom", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -317,7 +317,7 @@ namespace SiteDiscover.Persistence.Migrations
                     b.ToTable("ServerRooms");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.Site", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.Site", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -372,7 +372,7 @@ namespace SiteDiscover.Persistence.Migrations
                     b.ToTable("Sites");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.UploadedFile", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.UploadedFile", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -385,7 +385,6 @@ namespace SiteDiscover.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Extension")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FileName")
@@ -410,31 +409,31 @@ namespace SiteDiscover.Persistence.Migrations
                     b.ToTable("UploadedFiles");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.DigitalSignage", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.DigitalSignage", b =>
                 {
-                    b.HasOne("PMI_Site.Domain.Entities.Site", "Site")
+                    b.HasOne("SiteDiscover.Domain.Entities.Site", "Site")
                         .WithOne("DigitalSignage")
-                        .HasForeignKey("PMI_Site.Domain.Entities.DigitalSignage", "SiteId")
+                        .HasForeignKey("SiteDiscover.Domain.Entities.DigitalSignage", "SiteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Site");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.GeneralInformation", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.GeneralInformation", b =>
                 {
-                    b.HasOne("PMI_Site.Domain.Entities.Site", "Site")
+                    b.HasOne("SiteDiscover.Domain.Entities.Site", "Site")
                         .WithOne("GeneralInformation")
-                        .HasForeignKey("PMI_Site.Domain.Entities.GeneralInformation", "SiteId")
+                        .HasForeignKey("SiteDiscover.Domain.Entities.GeneralInformation", "SiteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Site");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.ITContact", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.ITContact", b =>
                 {
-                    b.HasOne("PMI_Site.Domain.Entities.Site", "Site")
+                    b.HasOne("SiteDiscover.Domain.Entities.Site", "Site")
                         .WithMany("Contacts")
                         .HasForeignKey("SiteId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -443,17 +442,17 @@ namespace SiteDiscover.Persistence.Migrations
                     b.Navigation("Site");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.ITContactUploadedFile", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.ITContactUploadedFile", b =>
                 {
-                    b.HasOne("PMI_Site.Domain.Entities.ITContact", "ITContact")
+                    b.HasOne("SiteDiscover.Domain.Entities.ITContact", "ITContact")
                         .WithOne("ITContactUploadedFile")
-                        .HasForeignKey("PMI_Site.Domain.Entities.ITContactUploadedFile", "ITContactId")
+                        .HasForeignKey("SiteDiscover.Domain.Entities.ITContactUploadedFile", "ITContactId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PMI_Site.Domain.Entities.UploadedFile", "UploadedFile")
+                    b.HasOne("SiteDiscover.Domain.Entities.UploadedFile", "UploadedFile")
                         .WithOne("ITContactUploadedFile")
-                        .HasForeignKey("PMI_Site.Domain.Entities.ITContactUploadedFile", "UploadedFileId")
+                        .HasForeignKey("SiteDiscover.Domain.Entities.ITContactUploadedFile", "UploadedFileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -462,46 +461,46 @@ namespace SiteDiscover.Persistence.Migrations
                     b.Navigation("UploadedFile");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.MeetingRoom", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.MeetingRoom", b =>
                 {
-                    b.HasOne("PMI_Site.Domain.Entities.Site", "Site")
+                    b.HasOne("SiteDiscover.Domain.Entities.Site", "Site")
                         .WithOne("MeetingRoom")
-                        .HasForeignKey("PMI_Site.Domain.Entities.MeetingRoom", "SiteId")
+                        .HasForeignKey("SiteDiscover.Domain.Entities.MeetingRoom", "SiteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Site");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.NetworkArchitecture", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.NetworkArchitecture", b =>
                 {
-                    b.HasOne("PMI_Site.Domain.Entities.Site", "Site")
+                    b.HasOne("SiteDiscover.Domain.Entities.Site", "Site")
                         .WithOne("NetworkArchitecture")
-                        .HasForeignKey("PMI_Site.Domain.Entities.NetworkArchitecture", "SiteId")
+                        .HasForeignKey("SiteDiscover.Domain.Entities.NetworkArchitecture", "SiteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Site");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.ServerRoom", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.ServerRoom", b =>
                 {
-                    b.HasOne("PMI_Site.Domain.Entities.Site", "Site")
+                    b.HasOne("SiteDiscover.Domain.Entities.Site", "Site")
                         .WithOne("ServerRoom")
-                        .HasForeignKey("PMI_Site.Domain.Entities.ServerRoom", "SiteId")
+                        .HasForeignKey("SiteDiscover.Domain.Entities.ServerRoom", "SiteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Site");
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.ITContact", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.ITContact", b =>
                 {
                     b.Navigation("ITContactUploadedFile")
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.Site", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.Site", b =>
                 {
                     b.Navigation("Contacts");
 
@@ -521,7 +520,7 @@ namespace SiteDiscover.Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PMI_Site.Domain.Entities.UploadedFile", b =>
+            modelBuilder.Entity("SiteDiscover.Domain.Entities.UploadedFile", b =>
                 {
                     b.Navigation("ITContactUploadedFile")
                         .IsRequired();

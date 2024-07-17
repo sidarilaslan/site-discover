@@ -15,9 +15,9 @@ namespace SiteDiscover.Application.Features.ITContacts.Queries.GetAll
 
         public class ITContactGetAllQueryHandler : IRequestHandler<ITContactGetAllQuery, List<ITContactGetAllDto>>
         {
-            private readonly IPMISiteContext _context;
+            private readonly Interfaces.IApplicationDbContext _context;
 
-            public ITContactGetAllQueryHandler(IPMISiteContext context)
+            public ITContactGetAllQueryHandler(Interfaces.IApplicationDbContext context)
             {
                 _context = context;
             }

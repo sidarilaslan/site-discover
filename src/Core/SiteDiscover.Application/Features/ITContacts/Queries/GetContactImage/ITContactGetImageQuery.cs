@@ -16,9 +16,9 @@ namespace PMI_Site.Application.Features.ITContacts.Queries.GetContactImage
 
         public class ITContactGetImageQueryHandler : IRequestHandler<ITContactGetImageQuery, ITContactGetImageResponse>
         {
-            IPMISiteContext _context;
+            SiteDiscover.Application.Interfaces.IApplicationDbContext _context;
 
-            public ITContactGetImageQueryHandler(IPMISiteContext context)
+            public ITContactGetImageQueryHandler(SiteDiscover.Application.Interfaces.IApplicationDbContext context)
             {
                 _context = context;
             }

@@ -1,11 +1,10 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using SiteDiscover.Application.Interfaces;
 using SiteDiscover.Domain.Entities;
 
 namespace SiteDiscover.Application.Features.GeneralInformations.Queries.GeneralInformationGetById
 {
-    public class GeneralInformationGetByIdQuery :IRequest<GeneralInformationGetByIdDto>
+    public class GeneralInformationGetByIdQuery : IRequest<GeneralInformationGetByIdDto>
     {
         public Guid SiteId { get; set; }
 
@@ -16,9 +15,9 @@ namespace SiteDiscover.Application.Features.GeneralInformations.Queries.GeneralI
 
         public class GeneralInformationGetByIdQueryHandler : IRequestHandler<GeneralInformationGetByIdQuery, GeneralInformationGetByIdDto>
         {
-            private readonly IPMISiteContext _context;
+            private readonly Interfaces.IApplicationDbContext _context;
 
-            public GeneralInformationGetByIdQueryHandler(IPMISiteContext context)
+            public GeneralInformationGetByIdQueryHandler(Interfaces.IApplicationDbContext context)
             {
                 _context = context;
             }

@@ -4,23 +4,23 @@ using Microsoft.Extensions.Configuration;
 
 namespace SiteDiscover.Persistence.Contexts.EntityFramework
 {
-    public class PMISiteContextFactory : IDesignTimeDbContextFactory<PMISiteContext>
+    public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
     {
-        public PMISiteContext CreateDbContext(string[] args)
+        public ApplicationDbContext CreateDbContext(string[] args)
         {
             string hostEnvironmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile($"appsettings{hostEnvironmentName}.json",optional:true)
+                .AddJsonFile($"appsettings{hostEnvironmentName}.json", optional: true)
                 .Build();
 
             string connectionString = configuration.GetConnectionString("DefaultConnection");
 
-            var optionsBuilder = new DbContextOptionsBuilder<PMISiteContext>()
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
                 .UseSqlServer(connectionString);
 
-            return new PMISiteContext(optionsBuilder.Options);
+            return new ApplicationDbContext(optionsBuilder.Options);
         }
     }
 }

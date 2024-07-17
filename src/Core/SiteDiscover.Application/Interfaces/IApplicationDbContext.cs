@@ -3,7 +3,7 @@ using SiteDiscover.Domain.Entities;
 
 namespace SiteDiscover.Application.Interfaces
 {
-    public interface IPMISiteContext
+    public interface IApplicationDbContext 
     {
         DbSet<Site> Sites { get; set; }
         DbSet<ServerRoom> ServerRooms { get; set; }

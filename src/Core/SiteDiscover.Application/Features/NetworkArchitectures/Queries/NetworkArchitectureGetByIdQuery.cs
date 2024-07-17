@@ -14,9 +14,9 @@ namespace SiteDiscover.Application.Features.NetworkArchitectures.Queries
         }
         public class NetworkArchitectureGetByIdQueryHandler : IRequestHandler<NetworkArchitectureGetByIdQuery, NetworkArchitectureGetByIdDto>
         {
-            private readonly IPMISiteContext _context;
+            private readonly Interfaces.IApplicationDbContext _context;
 
-            public NetworkArchitectureGetByIdQueryHandler(IPMISiteContext context)
+            public NetworkArchitectureGetByIdQueryHandler(Interfaces.IApplicationDbContext context)
             {
                 _context = context;
             }

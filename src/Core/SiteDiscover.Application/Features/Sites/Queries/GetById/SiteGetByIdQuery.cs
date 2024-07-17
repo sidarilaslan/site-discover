@@ -16,8 +16,8 @@ namespace PMI_Site.Application.Features.Sites.Queries.GetById
 
         public class GetByIdSiteQueryHandler : IRequestHandler<SiteGetByIdQuery, SiteGetByIdDto>
         {
-            private readonly IPMISiteContext _context;
-            public GetByIdSiteQueryHandler(IPMISiteContext context)
+            private readonly SiteDiscover.Application.Interfaces.IApplicationDbContext _context;
+            public GetByIdSiteQueryHandler(SiteDiscover.Application.Interfaces.IApplicationDbContext context)
             {
                 _context = context;
             }

@@ -15,9 +15,9 @@ namespace SiteDiscover.Application.Features.DigitalSignages.Queries.GetById
 
         public class DigitalSignageGetByIdQueryHandler : IRequestHandler<DigitalSignageGetByIdQuery, DigitalSignageGetByIdDto>
         {
-            private readonly IPMISiteContext _context;
+            private readonly Interfaces.IApplicationDbContext _context;
 
-            public DigitalSignageGetByIdQueryHandler(IPMISiteContext context)
+            public DigitalSignageGetByIdQueryHandler(Interfaces.IApplicationDbContext context)
             {
                 _context = context;
             }

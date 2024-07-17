@@ -4,9 +4,9 @@ using SiteDiscover.Domain.Entities;
 
 namespace SiteDiscover.Persistence.Contexts.EntityFramework
 {
-    public class PMISiteContext : DbContext, IPMISiteContext
+    public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
-        public PMISiteContext(DbContextOptions options) : base(options)
+        public ApplicationDbContext(DbContextOptions options) : base(options)
         {
 
         }

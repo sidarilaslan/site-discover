@@ -14,9 +14,9 @@ namespace SiteDiscover.Application.Features.Sites.Queries.GetCountrySiteCount
 
         public class GetCountrySiteQueryHandler : IRequestHandler<GetCountrySiteQuery, List<GetCountrySiteDto>>
         {
-            private readonly IPMISiteContext _context;
+            private readonly Interfaces.IApplicationDbContext _context;
 
-            public GetCountrySiteQueryHandler(IPMISiteContext context)
+            public GetCountrySiteQueryHandler(Interfaces.IApplicationDbContext context)
             {
                 _context = context;
             }

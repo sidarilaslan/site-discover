@@ -15,9 +15,9 @@ namespace SiteDiscover.Application.Features.MeetingRooms.Queries.GetById
 
         public class MeetingRoomGetByIdQueryHandler : IRequestHandler<MeetingRoomGetByIdQuery, MeetingRoomGetByIdDto>
         {
-            private readonly IPMISiteContext _context;
+            private readonly Interfaces.IApplicationDbContext _context;
 
-            public MeetingRoomGetByIdQueryHandler(IPMISiteContext context)
+            public MeetingRoomGetByIdQueryHandler(Interfaces.IApplicationDbContext context)
             {
                 _context = context;
             }

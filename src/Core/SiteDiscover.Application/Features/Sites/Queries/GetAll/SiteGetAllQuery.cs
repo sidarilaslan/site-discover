@@ -15,9 +15,9 @@ namespace SiteDiscover.Application.Features.Sites.Queries.GetAllSite
 
         public class GetAllSiteQueryHandler : IRequestHandler<SiteGetAllQuery, List<SiteGetAllDto>>
         {
-            public IPMISiteContext _context;
+            public Interfaces.IApplicationDbContext _context;
 
-            public GetAllSiteQueryHandler(IPMISiteContext context)
+            public GetAllSiteQueryHandler(Interfaces.IApplicationDbContext context)
             {
                 _context = context;
             }
