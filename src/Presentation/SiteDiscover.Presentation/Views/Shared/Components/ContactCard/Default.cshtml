@@ -1,0 +1,19 @@
+﻿@using System.Globalization
+@model ContactCardViewModel
+
+<h4 class="header-line-slim-sm">@Model.Header</h4>
+
+@foreach (var itContactAllDto in Model.Contacts)
+{
+    <div class="custom-card">
+        <div class="unit unit-spacing">
+            <div class="unit-left">
+                <img class="img-circles" src="~/@itContactAllDto.Directory/@itContactAllDto.FileName" alt="" width="75" height="75">
+            </div>
+            <div class="unit-body">
+                <h4 class="custom-card-title">@itContactAllDto.Username.ToUpper(new CultureInfo("tr-TR"))</h4>
+                <p class="custom-card-status">@itContactAllDto.UserJobTitle.ToUpper(new CultureInfo("tr-TR"))</p>
+            </div>
+        </div>
+    </div>
+}

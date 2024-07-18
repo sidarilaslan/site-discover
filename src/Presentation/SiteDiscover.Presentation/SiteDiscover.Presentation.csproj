@@ -10,6 +10,7 @@
   <ItemGroup>
     <Folder Include="Resources\Views\Shared\Components\Sites\" />
     <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\ITContactImages\" />
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
@@ -24,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\SiteDiscover.Application\SiteDiscover.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\SiteDiscover.Infrastructure\SiteDiscover.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Persistence\SiteDiscover.Persistence\SiteDiscover.Persistence.csproj" />
   </ItemGroup>
 

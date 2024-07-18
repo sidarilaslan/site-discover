@@ -1,10 +1,10 @@
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Localization.Routing;
 using SiteDiscover.Application;
+using SiteDiscover.Infrastructure;
+using SiteDiscover.Persistence;
 using SiteDiscover.Presentation.Extentions;
 using System.Globalization;
-using SiteDiscover.Persistence;
-using Microsoft.AspNetCore.Localization.Routing;
-using Microsoft.AspNetCore.Localization;
-using SiteDiscover.Presentation.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,10 +33,10 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
 });
 
 
-
 builder.Configuration.AddJsonFile($"appsettings.{envName}.json", optional: false, reloadOnChange: true);
 builder.Services.AddPersistanceService(builder.Configuration);
 builder.Services.AddApplicationService();
+builder.Services.AddInfrastructureService();
 builder.Services.AddHealthChecks();
 builder.Services.AddMemoryCache();
 

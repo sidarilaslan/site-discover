@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using SiteDiscover.Application.Interfaces;
+using SiteDiscover.Domain.Enums;
 
 namespace SiteDiscover.Application.Features.ITContacts.Queries.GetAll
 {
-    public class ITContactGetAllQuery : IRequest<List<ITContactGetAllDto>>
+    public class ITContactGetAllQuery : IRequest<Dictionary<ITContactCategory, List<ITContactGetAllDto>>>
     {
         public Guid SiteId { get; set; }
 
@@ -13,7 +13,7 @@ namespace SiteDiscover.Application.Features.ITContacts.Queries.GetAll
             SiteId = siteId;
         }
 
-        public class ITContactGetAllQueryHandler : IRequestHandler<ITContactGetAllQuery, List<ITContactGetAllDto>>
+        public class ITContactGetAllQueryHandler : IRequestHandler<ITContactGetAllQuery, Dictionary<ITContactCategory, List<ITContactGetAllDto>>>
         {
             private readonly Interfaces.IApplicationDbContext _context;
 
@@ -22,9 +22,23 @@ namespace SiteDiscover.Application.Features.ITContacts.Queries.GetAll
                 _context = context;
             }
 
-            public async Task<List<ITContactGetAllDto>> Handle(ITContactGetAllQuery request, CancellationToken cancellationToken)
+            public async Task<Dictionary<ITContactCategory, List<ITContactGetAllDto>>> Handle(ITContactGetAllQuery request, CancellationToken cancellationToken)
             {
-                return await _context.ITContacts.AsNoTracking().Where(contact => contact.SiteId == request.SiteId).Select(contact => ITContactGetAllDto.FromITContact(contact)).ToListAsync();
+                List<ITContactGetAllDto>? data = await _context.ITContacts
+              .AsNoTracking()
+              .Where(contact => contact.SiteId == request.SiteId)
+              .Include(c => c.ITContactUploadedFile)
+              .ThenInclude(c => c.UploadedFile)
+              .Select(contact => ITContactGetAllDto.FromITContact(contact))
+              .ToListAsync();
+
+                Dictionary<ITContactCategory, List<ITContactGetAllDto>> itContactKeyValues = data
+
+                    .GroupBy(dto => dto.ITContactCategory)
+                    .ToDictionary(g => g.Key, g => g.ToList());
+
+                return itContactKeyValues;
+
             }
         }
     }

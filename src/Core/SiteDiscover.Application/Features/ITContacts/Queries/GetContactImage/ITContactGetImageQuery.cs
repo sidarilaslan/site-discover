@@ -1,9 +1,8 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using SiteDiscover.Application.Interfaces;
 using SiteDiscover.Domain.Entities;
 
-namespace PMI_Site.Application.Features.ITContacts.Queries.GetContactImage
+namespace SiteDiscover.Application.Features.ITContacts.Queries.GetContactImage
 {
     public class ITContactGetImageQuery : IRequest<ITContactGetImageResponse>
     {

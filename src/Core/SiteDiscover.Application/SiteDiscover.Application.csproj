@@ -20,7 +20,6 @@
   <ItemGroup>
     <Folder Include="Features\DigitalSignages\Commands\" />
     <Folder Include="Features\GeneralInformations\Commands\" />
-    <Folder Include="Features\ITContacts\Commands\" />
     <Folder Include="Features\MeetingRooms\Commands\" />
     <Folder Include="Features\NetworkArchitectures\Commands\" />
     <Folder Include="Features\ServerRooms\Commands\" />

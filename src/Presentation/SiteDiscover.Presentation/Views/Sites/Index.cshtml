@@ -1,5 +1,4 @@
-﻿
-@using SiteDiscover.Application.Features.DigitalSignages.Queries.GetById
+﻿@using SiteDiscover.Application.Features.DigitalSignages.Queries.GetById
 @using SiteDiscover.Application.Features.GeneralInformations.Queries.GeneralInformationGetById
 @using SiteDiscover.Application.Features.ITContacts.Queries.GetAll
 @using SiteDiscover.Application.Features.MeetingRooms.Queries.GetById
@@ -7,60 +6,40 @@
 @using SiteDiscover.Application.Features.ServerRooms.Queries.GetById
 @using SiteDiscover.Application.Features.Sites.Queries.GetById
 @using System.Globalization
+@using SiteDiscover.Domain.Enums
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model (SiteGetByIdDto site,List<ITContactGetAllDto> ITContacts,GeneralInformationGetByIdDto GeneralInformation, DigitalSignageGetByIdDto digitalSignage, MeetingRoomGetByIdDto meetingRoom, ServerRoomGetByIdDto serverRoom,NetworkArchitectureGetByIdDto networkArchitecture )
-@* @functions{
-    private async Task RenderContacts(string header, IEnumerable<ITContactGetAllDto> contacts)
-    {
-        <h4 class="header-line-slim-sm">header</h4>
-        @foreach (var item in contacts)
-        {
-            <div class="custom-card">
-                <div class="unit unit-spacing">
-                    <div class="unit-left">
-                        <img class="img-circles" src="~/images/user-1-75x75.jpg" alt="" width="75" height="75">
-                    </div>
-                    <div class="unit-body">
-                        <h4 class="custom-card-title">@item.Username.ToUpper(new CultureInfo("tr-TR"))</h4>
-                        <p class="custom-card-status">@item.UserJobTitle.ToUpper(new CultureInfo("tr-TR"))</p>
-                    </div>
-                </div>
-            </div>
-        }
-    }
-} *@
-    <section>
+@model (SiteGetByIdDto site,Dictionary<ITContactCategory, List<ITContactGetAllDto>> ITContacts,GeneralInformationGetByIdDto GeneralInformation, DigitalSignageGetByIdDto digitalSignage, MeetingRoomGetByIdDto meetingRoom, ServerRoomGetByIdDto serverRoom,NetworkArchitectureGetByIdDto networkArchitecture )
+
+<section>
     <div class="container text-center">
         <h2 class="header-line-slim">@Localizer["IT Contacts"]</h2>
         <div class="row row-30 mt-4 justify-content-center">
-            <div class="col-md-6 col-lg-5 col-xl-4">
-         
 
-            </div>
-            <div class="col-md-6 col-lg-5 col-xl-4">
-                <h4 class="header-line-slim-sm">@Localizer["IT OPERATIONS"]</h4>
-                @foreach (var item in Model.ITContacts)
+            @foreach (var itContactKeyValuePair in Model.ITContacts)
+            {
+
+                var header = itContactKeyValuePair.Key switch
                 {
-                    <div class="custom-card">
-                        <div class="unit unit-spacing">
-                            <div class="unit-left">
-                                <img class="img-circles" src="~/images/user-1-75x75.jpg" alt="" width="75" height="75">
-                            </div>
-                            <div class="unit-body">
-                                <h4 class="custom-card-title">@item.Username.ToUpper(new CultureInfo("tr-TR"))</h4>
-                                <p class="custom-card-status">@item.UserJobTitle.ToUpper(new CultureInfo("tr-TR"))</p>
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
-            <div class="col-md-6 col-lg-5 col-xl-4">
-            
-            </div>
+                    ITContactCategory.TPE => "T&PE",
+                    ITContactCategory.IT_OPERATIONS => Localizer["IT OPERATIONS"].Value.ToString(),
+                    ITContactCategory.OSS => "OSS",
+                    _ => String.Empty
+                };
+                <div class="col-md-6 col-lg-5 col-xl-4">
+
+                    @await Component.InvokeAsync("ContactCard", new { header = header, contacts = itContactKeyValuePair.Value })
+                </div>
+            }
+
+
+
+
+
+
         </div>
     </div>
 </section>
@@ -138,7 +117,8 @@
                     <div class="unit">
                         <div class="unit-body">
                             <p class="custom-card-status mb-2">
-                                @Localizer["Server Rooms"]:</p>
+                                @Localizer["Server Rooms"]:
+                            </p>
                             <div>@Localizer["Total number of meeting room"]: @Model.serverRoom.TotalMeetingRooms</div>
                             <div>@Localizer["Number of Server Rooms"]:  @Model.serverRoom.NumberOfServerRooms</div>
                             <button class="btn btn-primary" type="submit"
@@ -181,7 +161,8 @@
                         <div class="unit-body">
                             <p class="custom-card-status">@Localizer["Network Architecture"]:</p>
                             <div>
-                                @Localizer["Number of internet lines"]: @Model.networkArchitecture.NumberOfInternetLines</div>
+                                @Localizer["Number of internet lines"]: @Model.networkArchitecture.NumberOfInternetLines
+                            </div>
                             <div>@Localizer["Connection Speed"]: @Model.networkArchitecture.ConnectionSpeed</div>
                             <button class="btn btn-primary" type="submit"
                                     onclick="window.location.href ='network-topology.html'">
