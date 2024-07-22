@@ -13,11 +13,11 @@ string envName = builder.Environment.EnvironmentName;
 builder.Services.AddControllersWithViews().AddViewLocalization(options => options.ResourcesPath = "Resources");
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
-    var defaultCulture = new CultureInfo("tr-TR");
+    var defaultCulture = new CultureInfo("tr");
     var supportedCultures = new[]
     {
         defaultCulture,
-        new("en-US")
+        new("en")
     };
     options.DefaultRequestCulture = new(defaultCulture);
     options.SupportedCultures = supportedCultures;
@@ -26,7 +26,11 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
 
     options.RequestCultureProviders = new IRequestCultureProvider[]
     {
-        new RouteDataRequestCultureProvider() {Options= options},
+        new RouteDataRequestCultureProvider() 
+        {
+           Options = options,
+           UIRouteDataStringKey="lang"
+        },
         new AcceptLanguageHeaderRequestCultureProvider()
     };
 
@@ -70,7 +74,12 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{ui-culture=en-US}/{controller=Home}/{action=Index}/{id?}");
+    pattern: "{lang=tr}/{controller=Home}/{id?}",
+    defaults: new { action = "Index" });
+
+app.MapControllerRoute(
+    name: "defaultWithAction",
+    pattern: "{lang=tr}/{controller=Home}/{action=Index}/{id?}");
 
 
 

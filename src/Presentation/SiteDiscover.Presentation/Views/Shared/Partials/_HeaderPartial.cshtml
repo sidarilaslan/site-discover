@@ -1,22 +1,44 @@
-﻿<header>
+﻿@using System.Globalization;
+@{
+    var currentUICulture =CultureInfo.CurrentUICulture.Name;
+}
+<header>
     <div class="container navbar-main">
         <div class="navbar-brand">
-            <a href="#"> <img src="~/images/logo.png" alt="brand image"></a>
+            <a href="/"> <img src="~/images/logo.png" alt="brand image"></a>
         </div>
-        <nav>
-            <ul class="nav-list">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#home">@Localizer["home"]</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contacts">@Localizer["contact"]</a>
-                </li>
-            </ul>
-        </nav>
-        <button class="navbar-burger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+        <div class="nav-container">
+            <nav>
+                <ul class="nav-list">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#home">@Localizer["home"]</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacts">@Localizer["contact"]</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    @currentUICulture.ToUpper()
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                    <li> <a class="dropdown-item" data-lang="EN" asp-controller="@ViewContext.RouteData.Values["controller"]" asp-action="@ViewContext.RouteData.Values["action"]">English</a> </li>
+
+                    <li> <a class="dropdown-item" data-lang="TR" asp-controller="@ViewContext.RouteData.Values["controller"]" asp-action="@ViewContext.RouteData.Values["action"]">Turkish</a> </li>
+                </ul>
+            </div>
+            <button class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+
+
+
     </div>
 </header>

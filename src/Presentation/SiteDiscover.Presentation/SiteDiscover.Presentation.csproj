@@ -8,10 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Resources\Views\Shared\Components\Sites\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\ITContactImages\" />
     <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,53 +46,53 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resources\Views\Home\Index.en-US.resx">
+    <EmbeddedResource Update="Resources\Views\Home\Index.en.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Index.en-US.Designer.cs</LastGenOutput>
+      <LastGenOutput>Index.en.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Views\Home\Index.tr-TR.resx">
+    <EmbeddedResource Update="Resources\Views\Home\Index.tr.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Index.tr-Tr.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Views\Home\Index.tr-TR.resx">
-      <LastGenOutput>Index.tr-TR.Designer.cs</LastGenOutput>
+    <EmbeddedResource Update="Resources\Views\Home\Index.tr.resx">
+      <LastGenOutput>Index.tr.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Views\Shared\Partials\_HeaderPartial.en-US.resx">
+    <EmbeddedResource Update="Resources\Views\Shared\Partials\_HeaderPartial.en.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>_HeaderPartial.en-US.Designer.cs</LastGenOutput>
+      <LastGenOutput>_HeaderPartial.en.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Views\Shared\Partials\_HeaderPartial.tr-TR.resx">
+    <EmbeddedResource Update="Resources\Views\Shared\Partials\_HeaderPartial.tr.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>_HeaderPartial.tr-TR.Designer.cs</LastGenOutput>
+      <LastGenOutput>_HeaderPartial.tr.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Views\Sites\Index.en-US.resx">
+    <EmbeddedResource Update="Resources\Views\Sites\Index.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Views\Sites\Index.tr-TR.resx">
+    <EmbeddedResource Update="Resources\Views\Sites\Index.tr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Resources\Views\Home\Index.en-US.Designer.cs">
+    <Compile Update="Resources\Views\Home\Index.en.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Index.en-US.resx</DependentUpon>
+      <DependentUpon>Index.en.resx</DependentUpon>
     </Compile>
-    <Compile Update="Resources\Views\Home\Index.tr-TR.Designer.cs">
+    <Compile Update="Resources\Views\Home\Index.tr.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Index.tr-TR.resx</DependentUpon>
+      <DependentUpon>Index.tr.resx</DependentUpon>
     </Compile>
-    <Compile Update="Resources\Views\Shared\Partials\_HeaderPartial.en-US.Designer.cs">
+    <Compile Update="Resources\Views\Shared\Partials\_HeaderPartial.en.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>_HeaderPartial.en-US.resx</DependentUpon>
+      <DependentUpon>_HeaderPartial.en.resx</DependentUpon>
     </Compile>
-    <Compile Update="Resources\Views\Shared\Partials\_HeaderPartial.tr-TR.Designer.cs">
+    <Compile Update="Resources\Views\Shared\Partials\_HeaderPartial.tr.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>_HeaderPartial.tr-TR.resx</DependentUpon>
+      <DependentUpon>_HeaderPartial.tr.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 

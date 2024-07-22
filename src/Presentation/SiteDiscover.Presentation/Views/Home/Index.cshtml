@@ -172,7 +172,7 @@
         $(() => {
             $('#sitesTable tbody tr').click(function () {
                 let siteId = $(this).attr('data-Id');
-                window.location.href = '/sites/index/' + siteId;
+                window.location.href = '@Url.Action("","sites")/' + siteId;
             });
         });
 
