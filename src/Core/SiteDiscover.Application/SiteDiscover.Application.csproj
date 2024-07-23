@@ -21,7 +21,6 @@
     <Folder Include="Features\DigitalSignages\Commands\" />
     <Folder Include="Features\GeneralInformations\Commands\" />
     <Folder Include="Features\MeetingRooms\Commands\" />
-    <Folder Include="Features\NetworkArchitectures\Commands\" />
     <Folder Include="Features\ServerRooms\Commands\" />
     <Folder Include="Features\Sites\Commands\" />
   </ItemGroup>

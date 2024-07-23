@@ -4,9 +4,16 @@
 @{
 }
 
-<h1>IMAGE UPLOAD</h1>
+<h1>CONTACT IMAGE UPLOAD</h1>
 
-<form method="post" enctype="multipart/form-data" action="UploadFile">
+<form method="post" enctype="multipart/form-data" action="file/uploadFile">
+    <input type="file" name="file" />
+    <button type="submit">Upload</button>
+</form>
+
+<h1>NETWORK IMAGE UPLOAD</h1>
+
+<form method="post" enctype="multipart/form-data" action="file/uploadNetworkFile">
     <input type="file" name="file" />
     <button type="submit">Upload</button>
 </form>

@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PMI_Site.Application.Features.Sites.Queries.GetById;
 using SiteDiscover.Application.Features.DigitalSignages.Queries.GetById;
 using SiteDiscover.Application.Features.GeneralInformations.Queries.GeneralInformationGetById;
 using SiteDiscover.Application.Features.ITContacts.Queries.GetAll;
 using SiteDiscover.Application.Features.MeetingRooms.Queries.GetById;
-using SiteDiscover.Application.Features.NetworkArchitectures.Queries;
+using SiteDiscover.Application.Features.NetworkArchitectures.Queries.GetById;
 using SiteDiscover.Application.Features.ServerRooms.Queries.GetById;
 using SiteDiscover.Application.Features.Sites.Queries.GetById;
 using SiteDiscover.Domain.Enums;

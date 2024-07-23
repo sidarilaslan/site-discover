@@ -18,7 +18,7 @@ namespace SiteDiscover.Domain.Entities
         [NotMapped]
         public override DateTime CreatedDate { get => base.CreatedDate; set => base.CreatedDate = value; }
         public ITContactUploadedFile ITContactUploadedFile { get; set; }
-
+        public NetworkArchitectureUploadedFile NetworkArchitectureUploadedFile { get; set; }
         public UploadedFile(string fileName, string directory, string path, FileType? fileType, string? extension)
         {
             FileName = fileName;

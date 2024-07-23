@@ -19,5 +19,6 @@ namespace SiteDiscover.Persistence.Contexts.EntityFramework
         public DbSet<NetworkArchitecture> NetworkArchitectures { get; set; }
         public DbSet<UploadedFile> UploadedFiles { get; set; }
         public DbSet<ITContactUploadedFile> ITContactUploadedFiles { get; set; }
+        public DbSet<NetworkArchitectureUploadedFile> NetworkArchitectureUploadedFiles { get; set; }
     }
 }

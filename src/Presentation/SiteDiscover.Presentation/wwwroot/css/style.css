@@ -843,17 +843,9 @@ footer .footer-panel {
 .image {
   height: 250px;
   width: auto;
-  /* border: 5px solid #fff; */
-  /* box-shadow: 0 5px 15px rgba(0, 0, 0, .1); */
-  overflow: hidden;
-  cursor: pointer;
-}
-.image img {
-  height: 100%;
-  width: 100%;
   object-fit: cover;
   transition: 0.2s linear;
 }
-.image img:hover {
+.image:hover {
   transform: scale(1.1);
 }

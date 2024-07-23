@@ -3,47 +3,53 @@ using Microsoft.AspNetCore.Http;
 using SiteDiscover.Application.Interfaces;
 using SiteDiscover.Domain.Entities;
 
-
-namespace SiteDiscover.Application.Features.ITContacts.Commands.NewFolder
+namespace SiteDiscover.Application.Features.NetworkArchitectures.Commands.AddNetworkImage
 {
-    public class AddContactImageCommand : IRequest<Unit>
+    public class AddNetworkImageCommand : IRequest<Unit>
     {
         public IFormFile File { get; set; }
         public string Path { get; set; }
         public string Directory { get; set; }
-        public Guid ITContactId { get; set; }
-
-
-        public AddContactImageCommand(IFormFile file, string path, string directory, Guid itContactId)
+        public Guid NetworkArchitectureId { get; set; }
+        public AddNetworkImageCommand(IFormFile file, string path, string directory, Guid networkArchitectureId)
         {
             File = file;
             Path = path;
             Directory = directory;
-            ITContactId = itContactId;
-
+            NetworkArchitectureId = networkArchitectureId;
         }
 
-        public class AddContactImageCommandHandler : IRequestHandler<AddContactImageCommand, Unit>
+
+
+        public class AddNetworkImageCommandHandler : IRequestHandler<AddNetworkImageCommand, Unit>
         {
             readonly IApplicationDbContext _context;
             readonly IFileHelper _fileHelper;
 
-            public AddContactImageCommandHandler(IApplicationDbContext context, IFileHelper fileHelper)
+            public AddNetworkImageCommandHandler(IApplicationDbContext context, IFileHelper fileHelper)
             {
                 _context = context;
                 _fileHelper = fileHelper;
             }
 
-            public async Task<Unit> Handle(AddContactImageCommand request, CancellationToken cancellationToken)
+            public async Task<Unit> Handle(AddNetworkImageCommand request, CancellationToken cancellationToken)
             {
                 (string path, string fileName) = await _fileHelper.UploadFileAsync(request.Path, request.File, cancellationToken);
-                    await _context.ITContactUploadedFiles.AddAsync(new ITContactUploadedFile()
+
+                try
+                {
+                    await _context.NetworkArchitectureUploadedFiles.AddAsync(new NetworkArchitectureUploadedFile()
                     {
-                        ITContactId = request.ITContactId,
+                        NetworkArchitectureId = request.NetworkArchitectureId,
                         UploadedFile = new UploadedFile(fileName, request.Directory, path, Domain.Enums.FileType.Img, System.IO.Path.GetExtension(fileName))
                     }, cancellationToken);
                     await _context.SaveChangesAsync(cancellationToken);
-               
+                }
+                catch (Exception e)
+                {
+
+                    throw new Exception(e.Message);
+                }
                 return Unit.Value;
             }
         }

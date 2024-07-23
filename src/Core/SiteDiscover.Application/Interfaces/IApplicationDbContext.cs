@@ -3,7 +3,7 @@ using SiteDiscover.Domain.Entities;
 
 namespace SiteDiscover.Application.Interfaces
 {
-    public interface IApplicationDbContext 
+    public interface IApplicationDbContext
     {
         DbSet<Site> Sites { get; set; }
         DbSet<ServerRoom> ServerRooms { get; set; }
@@ -14,7 +14,7 @@ namespace SiteDiscover.Application.Interfaces
         DbSet<NetworkArchitecture> NetworkArchitectures { get; set; }
         DbSet<UploadedFile> UploadedFiles { get; set; }
         DbSet<ITContactUploadedFile> ITContactUploadedFiles { get; set; }
-
+        DbSet<NetworkArchitectureUploadedFile> NetworkArchitectureUploadedFiles { get; set; }
 
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);

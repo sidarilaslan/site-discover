@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using SiteDiscover.Application.Interfaces;
 
-namespace SiteDiscover.Application.Features.NetworkArchitectures.Queries
+namespace SiteDiscover.Application.Features.NetworkArchitectures.Queries.GetById
 {
-    public class NetworkArchitectureGetByIdQuery:IRequest<NetworkArchitectureGetByIdDto>
+    public class NetworkArchitectureGetByIdQuery : IRequest<NetworkArchitectureGetByIdDto>
     {
         public Guid SiteId { get; set; }
 
@@ -14,9 +14,9 @@ namespace SiteDiscover.Application.Features.NetworkArchitectures.Queries
         }
         public class NetworkArchitectureGetByIdQueryHandler : IRequestHandler<NetworkArchitectureGetByIdQuery, NetworkArchitectureGetByIdDto>
         {
-            private readonly Interfaces.IApplicationDbContext _context;
+            private readonly IApplicationDbContext _context;
 
-            public NetworkArchitectureGetByIdQueryHandler(Interfaces.IApplicationDbContext context)
+            public NetworkArchitectureGetByIdQueryHandler(IApplicationDbContext context)
             {
                 _context = context;
             }

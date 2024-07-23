@@ -2,11 +2,11 @@
 @using SiteDiscover.Application.Features.GeneralInformations.Queries.GeneralInformationGetById
 @using SiteDiscover.Application.Features.ITContacts.Queries.GetAll
 @using SiteDiscover.Application.Features.MeetingRooms.Queries.GetById
-@using SiteDiscover.Application.Features.NetworkArchitectures.Queries
+@using SiteDiscover.Application.Features.NetworkArchitectures.Queries.GetById
 @using SiteDiscover.Application.Features.ServerRooms.Queries.GetById
 @using SiteDiscover.Application.Features.Sites.Queries.GetById
-@using System.Globalization
 @using SiteDiscover.Domain.Enums
+
 
 @{
     ViewData["Title"] = "Index";
@@ -122,7 +122,7 @@
                             <div>@Localizer["Total number of meeting room"]: @Model.serverRoom.TotalMeetingRooms</div>
                             <div>@Localizer["Number of Server Rooms"]:  @Model.serverRoom.NumberOfServerRooms</div>
                             <button class="btn btn-primary" type="submit"
-                                    onclick="window.location.href ='network-topology.html'">
+                                    onclick="window.location.href ='@Url.Action("","NetworkArchitecture")'">
                                 @Localizer["Server Rooms Gallery"]
                             </button>
                         </div>
@@ -165,7 +165,7 @@
                             </div>
                             <div>@Localizer["Connection Speed"]: @Model.networkArchitecture.ConnectionSpeed</div>
                             <button class="btn btn-primary" type="submit"
-                                    onclick="window.location.href ='network-topology.html'">
+                                    onclick="window.location.href ='@Url.Action("","networkArchitecture",new{Id= Model.networkArchitecture.Id})'">
                                 @Localizer["Network Topology"]
                             </button>
                         </div>

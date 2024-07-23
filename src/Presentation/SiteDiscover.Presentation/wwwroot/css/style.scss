@@ -974,20 +974,10 @@ footer {
 .image {
     height: 250px;
     width: auto;
-    /* border: 5px solid #fff; */
-    /* box-shadow: 0 5px 15px rgba(0, 0, 0, .1); */
-    overflow: hidden;
-    cursor: pointer;
+    object-fit: cover;
+    transition: .2s linear;
 
-
-    img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        transition: .2s linear;
-
-        &:hover {
-            transform: scale(1.1);
-        }
+    &:hover {
+        transform: scale(1.1);
     }
 }
