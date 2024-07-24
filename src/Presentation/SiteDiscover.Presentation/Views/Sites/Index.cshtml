@@ -122,7 +122,7 @@
                             <div>@Localizer["Total number of meeting room"]: @Model.serverRoom.TotalMeetingRooms</div>
                             <div>@Localizer["Number of Server Rooms"]:  @Model.serverRoom.NumberOfServerRooms</div>
                             <button class="btn btn-primary" type="submit"
-                                    onclick="window.location.href ='@Url.Action("","NetworkArchitecture")'">
+                                    onclick="window.location.href ='@Url.Action("","ServerRoom",new{Id=Model.serverRoom.Id})'">
                                 @Localizer["Server Rooms Gallery"]
                             </button>
                         </div>

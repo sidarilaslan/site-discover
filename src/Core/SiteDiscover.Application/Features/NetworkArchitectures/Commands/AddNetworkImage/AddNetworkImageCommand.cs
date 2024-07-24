@@ -36,20 +36,13 @@ namespace SiteDiscover.Application.Features.NetworkArchitectures.Commands.AddNet
             {
                 (string path, string fileName) = await _fileHelper.UploadFileAsync(request.Path, request.File, cancellationToken);
 
-                try
-                {
                     await _context.NetworkArchitectureUploadedFiles.AddAsync(new NetworkArchitectureUploadedFile()
                     {
                         NetworkArchitectureId = request.NetworkArchitectureId,
                         UploadedFile = new UploadedFile(fileName, request.Directory, path, Domain.Enums.FileType.Img, System.IO.Path.GetExtension(fileName))
                     }, cancellationToken);
                     await _context.SaveChangesAsync(cancellationToken);
-                }
-                catch (Exception e)
-                {
-
-                    throw new Exception(e.Message);
-                }
+              
                 return Unit.Value;
             }
         }

@@ -1,0 +1,22 @@
+﻿@using SiteDiscover.Application.Features.ServerRooms.Queries.GetImages
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model List<ServerRoomImagesGetDto>
+
+<div class="container text-center">
+    <h2 class="header-line-slim">@Localizer["Server Room"]</h2>
+    <div class="gallery">
+        @foreach (var item in Model)
+        {
+            <a href="~/@item.Directory/@item.FileName" target="_blank">
+                <img class="image" src="~/@item.Directory/@item.FileName"
+                     alt="@item.FileName">
+            </a>
+        }
+    </div>
+</div>
+
+

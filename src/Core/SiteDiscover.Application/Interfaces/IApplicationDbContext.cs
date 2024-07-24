@@ -15,6 +15,7 @@ namespace SiteDiscover.Application.Interfaces
         DbSet<UploadedFile> UploadedFiles { get; set; }
         DbSet<ITContactUploadedFile> ITContactUploadedFiles { get; set; }
         DbSet<NetworkArchitectureUploadedFile> NetworkArchitectureUploadedFiles { get; set; }
+        DbSet<ServerRoomUploadedFile> ServerRoomUploadedFiles { get; set; }
 
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
