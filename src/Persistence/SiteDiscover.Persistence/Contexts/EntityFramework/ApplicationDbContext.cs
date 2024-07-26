@@ -21,5 +21,6 @@ namespace SiteDiscover.Persistence.Contexts.EntityFramework
         public DbSet<ITContactUploadedFile> ITContactUploadedFiles { get; set; }
         public DbSet<NetworkArchitectureUploadedFile> NetworkArchitectureUploadedFiles { get; set; }
         public DbSet<ServerRoomUploadedFile> ServerRoomUploadedFiles { get; set; }
+        public DbSet<MeetingRoomDetail> MeetingRoomDetails { get; set; }
     }
 }

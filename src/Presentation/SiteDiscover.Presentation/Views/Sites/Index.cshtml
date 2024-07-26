@@ -34,12 +34,6 @@
                     @await Component.InvokeAsync("ContactCard", new { header = header, contacts = itContactKeyValuePair.Value })
                 </div>
             }
-
-
-
-
-
-
         </div>
     </div>
 </section>
@@ -137,7 +131,7 @@
                             <div>@Localizer["Total number of meeting room"]: @Model.meetingRoom.TotalMeetingRooms</div>
                             <div>@Localizer["Number of standard meeting room"]: @Model.meetingRoom.NumberOfStandardMeetingRooms</div>
                             <button class="btn btn-primary" type="submit"
-                                    onclick="window.location.href ='meeting-rooms.html'">
+                                    onclick="window.location.href ='@Url.Action("","MeetingRoomDetails",new{id= Model.meetingRoom.Id, siteName=Model.site.Name})'">
                                 @Localizer["Meeting Rooms Details"]
                             </button>
                         </div>

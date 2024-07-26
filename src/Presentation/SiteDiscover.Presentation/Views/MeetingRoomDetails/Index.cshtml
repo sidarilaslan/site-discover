@@ -1,0 +1,36 @@
+﻿@using SiteDiscover.Application.Features.MeetingRoomDetails.Queries.GetById
+
+@{
+    ViewData["Title"] = "Index";
+}
+@model MeetingRoomDetailsModel
+<div class="container text-center">
+    <h2 class="header-line-slim"> @Model.SiteName @Localizer["Meeting Rooms"]</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>@Localizer["Header"]</th>
+                    <th>@Localizer["Name"]</th>
+                    <th>@Localizer["Capacity"]</th>
+                    <th>@Localizer["Size"]</th>
+                    <th>@Localizer["Gallery"]</th>
+                    <th>@Localizer["Video Conference"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.MeetingRoomDetails)
+                {
+                    <tr>
+                        <th>@item.Header</th>
+                        <td>@item.Name</td>
+                        <td>@item.Capacity</td>
+                        <td>@item.Size</td>
+                        <td>@(item.HasVideoConference ? Html.Raw("<i class='bi bi-check-lg'></i>") : (Html.Raw("<i class='bi bi-dash-lg'></i>")))</td>
+                        <td>@(item.HasGallery ? Html.Raw("<i class='bi bi-check-lg'></i>") : (Html.Raw("<i class='bi bi-dash-lg'></i>")))</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

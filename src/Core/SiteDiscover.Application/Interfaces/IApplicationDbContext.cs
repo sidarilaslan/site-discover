@@ -8,6 +8,8 @@ namespace SiteDiscover.Application.Interfaces
         DbSet<Site> Sites { get; set; }
         DbSet<ServerRoom> ServerRooms { get; set; }
         DbSet<MeetingRoom> MeetingRooms { get; set; }
+        DbSet<MeetingRoomDetail> MeetingRoomDetails { get; set; }
+
         DbSet<ITContact> ITContacts { get; set; }
         DbSet<GeneralInformation> GeneralInformations { get; set; }
         DbSet<DigitalSignage> DigitalSignages { get; set; }

@@ -8,5 +8,6 @@ namespace SiteDiscover.Domain.Entities
         public string NumberOfStandardMeetingRooms { get; set; }
         public Site Site { get; set; }
         public Guid SiteId { get; set; }
+        public  ICollection<MeetingRoomDetail> meetingRoomDetails { get; set; }
     }
 }

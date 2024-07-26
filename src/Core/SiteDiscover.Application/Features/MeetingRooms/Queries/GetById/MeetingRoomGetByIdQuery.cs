@@ -25,6 +25,7 @@ namespace SiteDiscover.Application.Features.MeetingRooms.Queries.GetById
             public async Task<MeetingRoomGetByIdDto> Handle(MeetingRoomGetByIdQuery request, CancellationToken cancellationToken)
             {
                 var meetingRoom = await _context.MeetingRooms.AsNoTracking().FirstOrDefaultAsync(meetingRoom => meetingRoom.SiteId == request.SiteId);
+
                 return MeetingRoomGetByIdDto.FromMeetingRoom(meetingRoom);
             }
         }
