@@ -9,18 +9,18 @@ namespace SiteDiscover.Application.Features.ITContacts.Queries.GetAll
         public string Username { get; set; }
         public string UserJobTitle { get; set; }
         public string Path { get; set; }
-        public string FileName { get; set; }
-        public string? Directory { get; set; } = null;
+        public string FileName { get; set; } 
+        public string Directory { get; set; } 
 
-        public static ITContactGetAllDto FromITContact(ITContact ITContact)
+        public static ITContactGetAllDto FromITContact(ITContact itContact)
             => new()
             {
-                Username = ITContact.Username,
-                UserJobTitle = ITContact.UserJobTitle,
-                ITContactCategory = ITContact.ITContactCategory,
-                FileName = ITContact.ITContactUploadedFile.UploadedFile.FileName,
-                Path = ITContact.ITContactUploadedFile.UploadedFile.Path,
-                Directory = ITContact.ITContactUploadedFile.UploadedFile.Directory,
+                Username = itContact.Username,
+                UserJobTitle = itContact.UserJobTitle,
+                ITContactCategory = itContact.ITContactCategory,
+                FileName = itContact.ITContactUploadedFile?.UploadedFile.FileName ?? "default-picture.png",
+                Path = itContact.ITContactUploadedFile?.UploadedFile.Path,
+                Directory = itContact.ITContactUploadedFile?.UploadedFile?.Directory ?? "images",
             };
     }
 }
